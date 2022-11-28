@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "364519446830",
+    "firebase_url": "https://donasi-2e235-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "donasi-2e235",
+    "storage_bucket": "donasi-2e235.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364519446830:android:e11a4c5dd66b5fadc0c2bf",
+        "android_client_info": {
+          "package_name": "com.android.application.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "364519446830-2meqj62c7fn06slqgvtlinkin270updd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.application.debug",
+            "certificate_hash": "971139f8930479b8f1a6a79623e61468ca9a64f3"
+          }
+        },
+        {
+          "client_id": "364519446830-vrtil7vorghc0f2459hikp0d945ibdq5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0uRVQuf23LZwXHJHFKkPP72U9GZ0upTs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "364519446830-vrtil7vorghc0f2459hikp0d945ibdq5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

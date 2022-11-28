@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_20sdp">
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:columnCount="2"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/card_margin_end"
+        android:rowCount="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout_donasi">
+
+        <Button
+            android:id="@+id/btn_donatur"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/card_margin_end"
+            android:background="@drawable/background_login_button"
+            android:text="Donatur"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_pengurus"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/card_margin_start"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_login_button"
+            android:text="Pengurus"
+            android:textStyle="bold" />
+    </GridLayout>
+
+</ScrollView>
