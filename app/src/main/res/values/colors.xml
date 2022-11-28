@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="darkerOrange">#008069</color>
+    <color name="lighterOrange">#00a884</color>
+    <color name="black">#101010</color>
+    <color name="black_text">#535353</color>
+    <color name="black_trans">#60000000</color>
+    <color name="lighGray">#F2F2F2</color>
+    <color name="blueLink">#2196F3</color>
+
+    <color name="lighterOrangeTrans">#7300A884</color>
+    <color name="lighterOrangeTrans2">#1A00D0A4</color>
+    <color name="black_zoom_trans">#5C787878</color>
+    <color name="s">#E7E7E7</color>
+    <color name="color_shimmer">#A1A1A1</color>
+    <color name="transparan">#00FFFFFF</color>
+
+
+
+
+
+
+</resources>

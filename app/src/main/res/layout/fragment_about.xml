@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mydonate.activity.AboutActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkerOrange"
+            android:padding="@dimen/_9sdp"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Kembali"
+                android:src="@drawable/ic_baseline_chevron_left_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif"
+                android:maxLines="1"
+                android:text="About Me"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/iv_back" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+            <TextView
+                android:id="@+id/titleProfilDonatur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/lighGray"
+                android:padding="@dimen/margin_small"
+                android:text="Profil"
+                android:textColor="@color/black_trans"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />\
+
+            <TextView
+                android:id="@+id/tv_nama_donatur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:padding="@dimen/_6sdp"
+                android:text="@string/profil"
+                android:textAlignment="viewStart" />
+
+            <LinearLayout
+                android:id="@+id/llPhonePengurus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:orientation="horizontal"
+                android:padding="@dimen/margin_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llEmailPengurus">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nomor HP : " />
+
+                <TextView
+                    android:id="@+id/tv_phone_pengurus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="phone"
+                    android:maxLines="2"
+                    android:text="0822-8578-7430"
+                    android:textAlignment="textEnd"
+                    android:textColorLink="@color/blueLink" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:orientation="horizontal"
+                android:padding="@dimen/margin_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llEmailPengurus">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email : " />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="email"
+                    android:maxLines="2"
+                    android:text="mydonation@gmail.com"
+                    android:textAlignment="textEnd"
+                    android:textColorLink="@color/blueLink" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/lighGray"
+                android:padding="@dimen/margin_small"
+                android:text="Terpercaya Untuk Melakukan Donasi"
+                android:textColor="@color/black_trans"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />\
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:padding="@dimen/_6sdp"
+                android:text="@string/p2"
+                android:textAlignment="viewStart" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:padding="@dimen/_6sdp"
+                android:text="1. Mudah Dan Praktis"
+                android:textAlignment="viewStart"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:text="Prosedur dalam berdonasi sangat mudah untuk dipahami dan dilakukan pada pengguna baru."
+                android:textAlignment="viewStart" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:padding="@dimen/_6sdp"
+                android:text="2. Aman Dan Transaparan"
+                android:textAlignment="viewStart"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:text="Donasi yang kamu berikan 100% aman dan akan disalurkan secara transaparan oleh pihak myDonation."
+                android:textAlignment="viewStart" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:padding="@dimen/_6sdp"
+                android:text="3. Dapat Diakses Kapan Saja"
+                android:textAlignment="viewStart"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:text="Kamu dapat mengakses daan melakukan donasi kapan saja dan dimana saja."
+                android:textAlignment="viewStart" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:padding="@dimen/_6sdp"
+                android:text="4. Beragam Metode Pembayaran"
+                android:textAlignment="viewStart"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:text="Kamu dapat berdonasi menggunakan berbagai macam metode pembayaran."
+                android:textAlignment="viewStart" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/lighGray"
+                android:padding="@dimen/margin_small"
+                android:text="Manfaat"
+                android:textColor="@color/black_trans"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />\
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:padding="@dimen/_6sdp"
+                android:text="@string/p3"
+                android:textAlignment="viewStart" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:padding="@dimen/_6sdp"
+                android:text="1. Publikasi Masjid / Musolla"
+                android:textAlignment="viewStart"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:text="@string/p4"
+                android:textAlignment="viewStart" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:padding="@dimen/_6sdp"
+                android:text="2. Membantu Dalam Memenuhi Kebutuhan"
+                android:textAlignment="viewStart"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:text="@string/p5"
+                android:textAlignment="viewStart" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:padding="@dimen/_6sdp"
+                android:text="3. Keamanan Dalam Bertransaksi"
+                android:textAlignment="viewStart"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:text="@string/p6"
+                android:textAlignment="viewStart" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:padding="@dimen/_6sdp"
+                android:text="4. Pengelolaan Secara Transaparan"
+                android:textAlignment="viewStart"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:text="@string/p7"
+                android:textAlignment="viewStart" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

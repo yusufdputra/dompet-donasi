@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:padding="@dimen/list_item_spacing"
+    tools:context=".fragment.item.ItemPencairanDanaDialogFragment"
+    tools:listitem="@layout/fragment_item_pencairan_dana_list_dialog_item">
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pencairan Dana"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="8dp" />
+
+    <TextView
+        android:layout_marginTop="@dimen/margin_medium"
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tujuan : "
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/sp_pilih_kebutuhan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end|top"
+        android:paddingVertical="@dimen/margin_medium"
+        android:textAlignment="textEnd"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout_biaya"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:background="@android:color/transparent"
+        android:gravity="end"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:hint="Masukkan Nominal"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_pilih_kebutuhan"
+        tools:layout_editor_absoluteX="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_biaya"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:textAlignment="textEnd" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout_keterangan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:background="@android:color/transparent"
+        android:gravity="end"
+        android:hint="Keterangan Permohonan"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout_biaya"
+        tools:layout_editor_absoluteX="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_keterangan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:paddingStart="0dp"
+            android:lines="6"
+            android:gravity="top|left"
+            android:paddingEnd="0dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/llDana"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout_keterangan">
+
+        <TextView
+            android:id="@+id/nominalAsalDana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dana Tersedia : "
+            android:textColor="@color/black"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_nominalAsalDana"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|end"
+            android:paddingVertical="@dimen/_12sdp"
+            android:text="Rp. "
+            android:textColor="@color/darkerOrange"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_ajukan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:layout_marginTop="431dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:text="Ajukan"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llDana" />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_ajukan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

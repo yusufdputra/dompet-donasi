@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8sdp"
+        android:paddingTop="@dimen/_12sdp"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/tv_nama_kebutuhan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="5"
+            android:ellipsize="end"
+            android:gravity="center_vertical|top"
+            android:maxLines="2"
+            android:textColor="@color/darkerOrange"/>
+
+        <TextView
+            android:id="@+id/tv_detail_kebutuhan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="5"
+            android:ellipsize="start"
+            android:gravity="center_vertical|top"
+            android:maxLines="2"
+            android:paddingRight="@dimen/_10sdp"
+            android:textSize="@dimen/_9sdp"
+            android:textColor="@color/dark_gray"/>
+
+        <View
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@color/grey_font"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"/>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

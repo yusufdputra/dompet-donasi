@@ -1,0 +1,422 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:attrs="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.mydonate.fragment.DetailMasjidMusholaFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/iv_background"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_140sdp"
+            android:background="@drawable/img_bg_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:contentDescription="Kembali"
+            android:src="@drawable/ic_baseline_chevron_left_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:maxLines="1"
+            android:text="Detail "
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_back" />
+
+        <LinearLayout
+            android:id="@+id/llImageview"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_160sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:background="@drawable/background_radius20"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Foto Masjid"
+                android:scaleType="centerCrop"
+                android:src="@color/lighGray"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title"
+                app:riv_corner_radius="20dp" />
+
+            <!--        shimmer foto atas-->
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_shimmer"
+                app:layout_constraintCircleRadius="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_12sdp"
+            android:text="Profil"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/llImageview"
+            app:layout_constraintStart_toStartOf="@+id/llImageview"
+            app:layout_constraintTop_toBottomOf="@+id/llImageview" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_marginBottom="6dp"
+            android:paddingStart="@dimen/_12sdp"
+            android:paddingEnd="@dimen/_12sdp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/llNamaMasjid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                app:layout_constraintStart_toStartOf="parent"
+                android:padding="@dimen/margin_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama : "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_nama_masjid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llAlamatM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                app:layout_constraintStart_toStartOf="parent"
+                android:padding="@dimen/margin_small"
+                app:layout_constraintTop_toBottomOf="@+id/llNamaMasjid">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat : "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_alamat_masjid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llPengurus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                app:layout_constraintStart_toStartOf="parent"
+                android:padding="@dimen/margin_small"
+                app:layout_constraintTop_toBottomOf="@+id/llAlamatM">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Pengurus : "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_nama_pengurus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llAlamatPengurus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                app:layout_constraintStart_toStartOf="parent"
+                android:padding="@dimen/margin_small"
+                app:layout_constraintTop_toBottomOf="@+id/llPengurus">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat Pengurus : "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_alamat_pengurus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llEmailPengurus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                app:layout_constraintStart_toStartOf="parent"
+                android:padding="@dimen/margin_small"
+                app:layout_constraintTop_toBottomOf="@+id/llAlamatPengurus">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email Pengurus : "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_email_pengurus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:textColorLink="@color/blueLink"
+                    android:autoLink="email"
+                    android:textAlignment="textEnd" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llPhonePengurus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                app:layout_constraintStart_toStartOf="parent"
+                android:padding="@dimen/margin_small"
+                app:layout_constraintTop_toBottomOf="@+id/llEmailPengurus">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nomor HP : "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_phone_pengurus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:autoLink="phone"
+                    android:textColorLink="@color/blueLink"
+                    android:textAlignment="textEnd" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llDeposit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                app:layout_constraintStart_toStartOf="parent"
+                android:padding="@dimen/margin_small"
+                app:layout_constraintTop_toBottomOf="@+id/llPhonePengurus">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Deposit : "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_deposit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:textColor="@color/black"
+                    android:textAlignment="textEnd" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_12sdp"
+            android:text="Kebutuhan"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+        <LinearLayout
+            android:id="@+id/LLKebutuhan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+            <TextView
+                android:id="@+id/tv_no_data1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="@string/no_data"
+                android:textAlignment="center"
+                 />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:visibility="gone"
+                android:id="@+id/rv_kebutuhan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerlayout_kebutuhan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:shimmer_duration="1000">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/shimer_kebutuhan"></include>
+
+                    <include layout="@layout/shimer_kebutuhan"></include>
+
+                    <include layout="@layout/shimer_kebutuhan"></include>
+
+
+                </LinearLayout>
+
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_12sdp"
+            android:text="Histori Donatur"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LLKebutuhan" />
+
+        <LinearLayout
+            android:id="@+id/llDonatur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+            <TextView
+                android:id="@+id/tv_no_data2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no_data"
+                android:textAlignment="center"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:visibility="gone"
+                android:id="@+id/rv_riwayat_donasi"
+                android:layout_width="match_parent"
+                android:fitsSystemWindows="true"
+                attrs:listitem="@layout/item_riwayat_donasi"
+                android:layout_height="@dimen/_500sdp"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_small" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:shimmer_duration="1000">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/shimer_riwayat_donasi"></include>
+
+                    <include layout="@layout/shimer_riwayat_donasi"></include>
+
+                    <include layout="@layout/shimer_riwayat_donasi"></include>
+
+                    <include layout="@layout/shimer_riwayat_donasi"></include>
+
+                    <include layout="@layout/shimer_riwayat_donasi"></include>
+
+                </LinearLayout>
+
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -1,0 +1,380 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.mydonate.fragment.DetailMasjidMusholaFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/iv_background"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_140sdp"
+            android:background="@drawable/img_bg_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:contentDescription="Kembali"
+            android:src="@drawable/ic_baseline_chevron_left_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:maxLines="1"
+            android:text="Detail "
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_back" />
+
+        <RelativeLayout
+            android:id="@+id/rl_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_160sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:contentDescription="Foto Masjid"
+                android:scaleType="centerCrop"
+                android:src="@drawable/background_splash"
+                app:riv_corner_radius="20dp" />
+
+        </RelativeLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cons_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/rl_image">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_12sdp"
+                android:text="Detail"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/llNama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView">
+
+                <TextView
+                    android:id="@+id/namamasjid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_12sdp"
+                    android:text="Nama Tempat : "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_nama_masjid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:padding="@dimen/_12sdp"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black_text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llAlamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llNama">
+
+                <TextView
+                    android:id="@+id/alamatmasjid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_12sdp"
+                    android:text="Alamat Tempat :"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/llNama" />
+
+                <TextView
+                    android:id="@+id/tv_alamat_masjid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_12sdp"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black_text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llNamaPengurus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llAlamat">
+
+                <TextView
+                    android:id="@+id/nama_pengurus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_12sdp"
+                    android:text="Nama Pengurus : "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_nama_pengurus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_12sdp"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black_text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llAlamatPengurus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llNamaPengurus">
+
+                <TextView
+                    android:id="@+id/alamat_pengurus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_12sdp"
+                    android:text="Alamat Pengurus : "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_alamat_pengurus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_12sdp"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black_text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llAlamatPengurus">
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_12sdp"
+                    android:text="Email : "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_12sdp"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black_text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llEmail">
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_12sdp"
+                android:text="Nomor Hp : "
+                android:textColor="@color/black"
+                 />
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="textEnd"
+                android:padding="@dimen/_12sdp"
+                android:textColor="@color/black_text"
+              />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_foto_ktp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:padding="@dimen/_12sdp"
+                android:text="Foto KTP Pengurus"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llPhone" />
+
+            <ImageView
+                android:id="@+id/iv_view_ktp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="View"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:src="@drawable/ic_baseline_remove_red_eye_24"
+                app:layout_constraintTop_toTopOf="@+id/tv_foto_ktp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_foto_ktp"
+                app:layout_constraintEnd_toEndOf="parent"
+                 />
+
+            <TextView
+                android:id="@+id/tv_foto_surat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:padding="@dimen/_12sdp"
+                android:text="Foto SK Pengurus"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_foto_ktp" />
+
+            <ImageView
+                android:id="@+id/iv_view_surat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Edit"
+                android:src="@drawable/ic_baseline_remove_red_eye_24"
+                android:layout_marginEnd="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_foto_surat"
+                app:layout_constraintTop_toTopOf="@+id/tv_foto_surat" />
+
+            <TextView
+                android:id="@+id/tv_foto_imb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:padding="@dimen/_12sdp"
+                android:text="Foto Izin Mendirikan Masjid (IMB)"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_foto_surat" />
+
+            <ImageView
+                android:id="@+id/iv_view_imb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Edit"
+                android:src="@drawable/ic_baseline_remove_red_eye_24"
+                android:layout_marginEnd="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_foto_imb"
+                app:layout_constraintTop_toTopOf="@+id/tv_foto_imb" />
+
+            <TextView
+                android:id="@+id/tv_foto_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:padding="@dimen/_12sdp"
+                android:text="Foto Surat Izin Masjid/Mushola"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_foto_imb" />
+
+            <ImageView
+                android:id="@+id/iv_view_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Edit"
+                android:src="@drawable/ic_baseline_remove_red_eye_24"
+                android:layout_marginEnd="@dimen/_12sdp"
+                app:layout_constraintTop_toTopOf="@+id/tv_foto_sim"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_foto_sim"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <GridLayout
+                android:id="@+id/gridLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/card_margin_end"
+                android:rowCount="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_foto_sim">
+
+                <Button
+                    android:id="@+id/btn_reject"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="@dimen/card_margin_end"
+                    android:background="@drawable/background_login_button"
+                    android:backgroundTint="@color/lighGray"
+                    android:text="Tolak"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_approve"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/card_margin_start"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/background_login_button"
+                    android:text="Terima"
+                    android:textStyle="bold" />
+            </GridLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

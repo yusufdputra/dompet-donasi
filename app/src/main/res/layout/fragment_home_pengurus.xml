@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.HomeDonaturFragment">
+
+    <View
+        android:id="@+id/iv_background"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@drawable/img_bg_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_user_profile_pic"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_big"
+        android:contentDescription="Foto Profil"
+        android:src="@drawable/profile_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:contentDescription="Edit"
+        android:src="@drawable/ic_baseline_power_settings_new_24"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_user_profile_pic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_user_profile_pic" />
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:fontFamily="sans-serif"
+        android:text="Hi, Nama User"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_user_profile_pic"
+        app:layout_constraintStart_toEndOf="@+id/iv_user_profile_pic"
+        app:layout_constraintTop_toTopOf="@+id/iv_user_profile_pic" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_menu_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_margin_start"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="@dimen/card_margin_end"
+        android:orientation="vertical"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_user_profile_pic">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/_12sdp"
+            android:weightSum="3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_weight="1"
+                android:background="@drawable/background_login_button"
+                android:backgroundTint="@color/lighterOrangeTrans2"
+                android:padding="@dimen/margin_medium">
+
+                <ImageView
+                    android:id="@+id/iv_menu_masjid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Menu Masjid Icon"
+                    android:paddingHorizontal="@dimen/_6sdp"
+                    android:src="@drawable/masjid2" />
+
+                <TextView
+                    android:id="@+id/tv_menu_masjid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:minLines="2"
+                    android:text="Masjid"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_menu_masjid"
+                    app:layout_constraintStart_toStartOf="@+id/iv_menu_masjid"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_menu_masjid" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_mushola"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_weight="1"
+                android:background="@drawable/background_login_button"
+                android:backgroundTint="@color/lighterOrangeTrans2"
+                android:padding="@dimen/margin_medium">
+
+                <ImageView
+                    android:id="@+id/iv_menu_mushola"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Menu Masjid Icon"
+                    android:paddingHorizontal="@dimen/_6sdp"
+                    android:src="@drawable/masjid" />
+
+                <TextView
+                    android:id="@+id/tv_menu_mushola"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:minLines="2"
+                    android:text="Mushola"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_menu_mushola"
+                    app:layout_constraintStart_toStartOf="@+id/iv_menu_mushola"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_menu_mushola" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/CLLaporanKeuangan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_weight="1"
+                android:background="@drawable/background_login_button"
+                android:backgroundTint="@color/lighterOrangeTrans2"
+                android:padding="@dimen/margin_medium">
+
+                <ImageView
+                    android:id="@+id/iv_laporan_keuangan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Menu Masjid Icon"
+                    android:paddingHorizontal="@dimen/_6sdp"
+                    android:src="@drawable/laporan_keuangan" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:minLines="2"
+                    android:text="@string/v_laporan_keuangan"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_laporan_keuangan" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_riwayat_donasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Riwayat Donasi"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_menu_container" />
+
+    <TextView
+        android:id="@+id/tv_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="Lainnya"
+        android:textColor="@color/black_trans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_menu_container" />
+
+    <TextView
+        android:id="@+id/tv_no_data1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:text="@string/no_data"
+        android:textAlignment="center"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_riwayat_donasi" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_user_donation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_riwayat_donasi"
+        tools:listitem="@layout/item_riwayat_donasi" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:background="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_riwayat_donasi"
+        app:shimmer_duration="800">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/shimer_riwayat_donasi"></include>
+
+            <include layout="@layout/shimer_riwayat_donasi"></include>
+
+            <include layout="@layout/shimer_riwayat_donasi"></include>
+        </LinearLayout>
+
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

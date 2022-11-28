@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.mydonate.fragment.DetailDonasiItemFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="@dimen/_9sdp"
+        android:background="@color/darkerOrange"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+<!--        <View-->
+<!--            android:id="@+id/iv_background"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/_40sdp"-->
+<!--            android:background="@color/darkerOrange"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Kembali"
+            android:src="@drawable/ic_baseline_chevron_left_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:maxLines="1"
+            android:text="Detail Riwayat Donasi"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_back" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/titleProfilDonatur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_small"
+            android:background="@color/lighGray"
+            android:text="Profil Donatur"
+            android:textSize="@dimen/_8sdp"
+            android:textColor="@color/black_trans"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/llNamaDonatur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="@dimen/margin_small"
+            app:layout_constraintTop_toBottomOf="@+id/titleProfilDonatur">
+
+            <TextView
+                android:id="@+id/namaD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama : "
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_nama_donatur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llEmailDonatur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="@dimen/margin_small"
+            app:layout_constraintTop_toBottomOf="@+id/llNamaDonatur">
+
+            <TextView
+                android:id="@+id/emailD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email : "
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_email_donatur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llNominal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="@dimen/margin_small"
+            app:layout_constraintTop_toBottomOf="@+id/llEmailDonatur">
+
+            <TextView
+                android:id="@+id/nominalD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nominal Donasi : "
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_nominal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="Rp. "
+                android:textAlignment="textEnd"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lltgl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="@dimen/margin_small"
+            app:layout_constraintTop_toBottomOf="@+id/llNominal">
+
+            <TextView
+                android:id="@+id/tgl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal : "
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_tgl_donasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/titleProfilTujuan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_small"
+            android:background="@color/lighGray"
+            android:text="Tujuan Donasi"
+            android:textSize="@dimen/_8sdp"
+            android:textColor="@color/black_trans"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/llNamaTempat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="@dimen/margin_small"
+            app:layout_constraintTop_toBottomOf="@+id/titleProfilTujuan">
+
+            <TextView
+                android:id="@+id/namaT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama : "
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_nama_tempat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textAlignment="textEnd"
+                android:textColor="@color/darkerOrange" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/llkebutuhan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="@dimen/margin_small"
+            app:layout_constraintTop_toBottomOf="@+id/llNamaTempat">
+
+            <TextView
+                android:id="@+id/kebutuhan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kebutuhan : "
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_nama_kebutuhan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llstatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="@dimen/margin_small"
+            app:layout_constraintTop_toBottomOf="@+id/llkebutuhan">
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status : "
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textAlignment="textEnd" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/llLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="@dimen/margin_small"
+            app:layout_constraintTop_toBottomOf="@+id/llstatus">
+
+            <TextView
+                android:id="@+id/link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Download Instruksi : "
+                android:textColor="@color/black"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/iv_view_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="View"
+                android:layout_marginEnd="@dimen/_6sdp"
+                android:src="@drawable/ic_baseline_cloud_download_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:shimmer_duration="1000">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_small"
+                    android:background="@color/lighGray"
+                    android:text="Profil Donatur"
+                    android:textSize="@dimen/_8sdp"
+                    android:textColor="@color/black_trans"
+                   />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_6sdp"
+                    android:background="@color/color_shimmer"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_6sdp"
+                    android:background="@color/color_shimmer"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_6sdp"
+                    android:background="@color/color_shimmer"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_6sdp"
+                    android:background="@color/color_shimmer"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_small"
+                    android:background="@color/lighGray"
+                    android:text="Tujuan Donasi"
+                    android:textSize="@dimen/_8sdp"
+                    android:textColor="@color/black_trans"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_6sdp"
+                    android:background="@color/color_shimmer"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_6sdp"
+                    android:background="@color/color_shimmer"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_6sdp"
+                    android:background="@color/color_shimmer"
+                    />
+
+            </LinearLayout>
+
+
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

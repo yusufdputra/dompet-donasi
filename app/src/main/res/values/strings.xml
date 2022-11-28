@@ -1,0 +1,104 @@
+<resources>
+
+<!--    DATABASE-->
+    <string name="ref_pengajuan_pencairan">Pencairan Dana</string>
+
+    <string name="app_name">Dompet Donasi</string>
+    <string name="mydonate">Dompet Donasi</string>
+    <string name="name_product">Dompet Donasi</string>
+    <string name="login">Masuk</string>
+    <string name="email">Email</string>
+    <string name="password">Kata Sandi</string>
+    <string name="lupa_password">Lupa Kata Sandi?</string>
+    <string name="tidak_memiliki_akun">Tidak Memiliki Akun?</string>
+    <string name="register">Daftar</string>
+    <string name="sudah_memiliki_akun">Sudah Memiliki Akun?</string>
+    <string name="signup">Daftar</string>
+    <string name="name">Nama</string>
+    <string name="nama_tempat">Nama Masjid/Mushola</string>
+    <string name="alamat_tempat">Alamat Masjid/Mushola (sesuai SK bangunan)</string>
+    <string name="foto_tempat">Foto Tampak Depan Masjid/Mushola</string>
+    <string name="foto_sim">Foto Surat Izin Masjid/Mushola</string>
+    <string name="nama_ktp">Nama Pengurus (sesuai KTP)</string>
+    <string name="nama_donatur">Nama Donatur</string>
+    <string name="alamat">Alamat Pengurus (sesuai KTP)</string>
+    <string name="foto_ktp">Foto KTP Pengurus</string>
+    <string name="foto_imb">Surat IMB</string>
+    <string name="sk_pengurus">SK Pengurus</string>
+    <string name="nomor_hp">Nomor HP</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="jumlah_donasi_concat">Rp. %1$s</string>
+    <string name="tipe">Daftar Sebagai</string>
+    <string name="tipe1">Donatur</string>
+    <string name="tipe2">Pengurus</string>
+    <string name="v_akun">Verifikasi\nAkun</string>
+    <string name="v_bayar">Verifikasi Pembayaran</string>
+    <string name="v_kelola_du">Dana\nDeposit</string>
+    <string name="v_kelola_pu">Program\nUmum</string>
+    <string name="pesan_tolak">Pembayaran anda tidak valid, silahkan upload bukti transaksi anda.</string>
+    <string name="v_barang">Penyerahan\nBarang</string>
+    <string name="v_pengajuan">Pencairan\nDana</string>
+    <string name="v_laporan_keuangan">Laporan\nKeuangan</string>
+    <string name="v_pilih_masjid">Masjid Musholla</string>
+
+    <string name="lipsum">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+    </string>
+    <string name="profil_masjid">
+        Masjid Raya Baiturrahman (Aksara Jawoë : مسجد راي بايتوررحمن ) adalah sebuah Masjid yang terletak di pusat kota Banda Aceh, Provinsi Aceh, Indonesia. Masjid Raya Baiturrahman adalah simbol agama, budaya, semangat, kekuatan, perjuangan dan nasionalisme rakyat Aceh. Masjid ini adalah landmark Banda Aceh sejak era Kesultanan Aceh dan selamat dari bencana tsunami pada 26 Desember 2004 silam.
+    </string>
+    <string name="rekening_donasi">
+        <u>012610217211298412</u>
+    </string>
+    <string name="keterangan_donasi">
+        Uang yang kami terima akan kami konfirmasi kembali menggunakan bukti pembayaran yang anda kirim.
+    </string>
+    <string name="keterangan_donasi_postfix">
+        Silahkan tekan <b>submit</b> untuk menyelesaikan transaksi!
+    </string>
+    <string name="keterangan_donasi_umum_prefix">
+        Uang yang kami terima akan kami konfirmasi kembali menggunakan bukti pembayaran yang anda kirim.
+    </string>
+    <string name="keterangan_donasi_umum">
+        Dana yang diterima akan kami distribusikan sesuai kebutuhan masjid/mushola yang ada.
+    </string>
+
+    <string-array name="tempat_type">
+        <item>Masjid</item>
+        <item>Mushola</item>
+    </string-array>
+    <string-array name="jenis_kebutuhan">
+        <item>Kebutuhan Umum</item>
+        <item>Kebutuhan Khusus</item>
+    </string-array>
+
+    <string-array name="tujuan_operasional">
+        <item>Biaya transfer pencairan dana</item>
+        <item>Gaji karyawan</item>
+        <item>Biaya penyerahan barang</item>
+        <item>Biaya pengembangan ekspansi aplikasi</item>
+    </string-array>
+
+    <string-array name="asal_dana_type">
+        <item>Pilih Asal Dana</item>
+<!--        <item>Dana Umum</item>-->
+        <item>Deposit</item>
+    </string-array>
+    <string name="type">Jenis Pengguna</string>
+    <string name="no_data">Data tidak ditemukan</string>
+
+
+<!--    ABOUT ME TEXt-->
+
+    <string name="profil">Dompet Donasi ini adalah salah satu layanan aplikasi android untuk pengelolaan kebutuhan masjid ataupun musholla yang ada di Pekanbaru. Pengurus dapat langsung terhubung mulai dari pengajuan kebutuhan, riwayat donasi, penerimaan barang kebutuhan dan bukti penyerahan kebutuhan. pengelolaan dapat termonitoring secara  realtime. Kemudian para donatur juga dapat melihat pengelolaan dana donasi secara keseluruhan dalam aplikasi.</string>
+    <string name="p2">Dompet Donasi hadir sebagai media untuk menebarkan kebaikan setiap hari dengan sangat mudah yang dapat menjamin donasimu akan diterima oleh masjid / musholla yang telah didonasi.</string>
+    <string name="p3">Dengan bergabung kedalam aplikasi Dompet Donasi ini, para pengguna akan mendapatkan beberapa manfaat diantaranya sebagai berikut: </string>
+    <string name="p4">Aplikasi akan mempublikasikan masjid dan musholla yang sudah didaftarkan kedalam aplikasi kepada para pengguna yang sudah mendaftar. Sehingga masyarakat dapat  mengetahui keberadaan dan keadaan masjid ataupun musholla, serta kebutuhan yang diperlukan. </string>
+    <string name="p5">Pengurus dan jamaah masjid / musholla tidak perlu lagi untuk terjun kemasyarakat dalam mencari dana untuk mencari dana dalam memenuhi kebutuhan, masjid akan secara otomatis dipublikasikan pada aplikasi Dompet Donasi.</string>
+    <string name="p6">Para donatur yang ingin berdonasi dapat langsung memberikan donasinya melalui nomor rekening pihak Dompet Donasi yang tersedia. Jika dana donasi sudah terkumpul dan tercukupi, barang kebutuhan akan diserahkan kepada pengurus.</string>
+    <string name="p7">Pengelolaan dana donasi dipublikasikan dalam aplikasi dan dapat diketahui oleh pengurus dan donatur yang sudah mendaftar, sehinggga diharapkan pengelolaan dana donasi menjadi terpercaya dan transparan.</string>
+
+
+</resources>
