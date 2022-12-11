@@ -19,20 +19,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.mydonate.R;
-import com.mydonate.adapter.DaftarDonasikuAdapter;
 import com.mydonate.adapter.DaftarPembayaranAdapter;
 import com.mydonate.data.BayarKebutuhanData;
 import com.mydonate.data.DanaData;
-import com.mydonate.data.KebutuhanData;
-import com.mydonate.data.RiwayatPembayaranData;
 
 import java.util.ArrayList;
 
@@ -122,30 +117,48 @@ public class PembayaranFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     for (DataSnapshot npsnapshot : snapshot.getChildren()) {
-                        Object foto_bukti = npsnapshot.child("foto_bukti_donasi").getValue();
-                        if (foto_bukti == null) { // bukan donasi umum dan sudah di verifikasi
-                            BayarKebutuhanData list = npsnapshot.getValue(BayarKebutuhanData.class);
-                            bayarKebutuhanData.add(list);
-                            keyItem.add(npsnapshot.getKey());
-                        }
-                    }
-                    if (bayarKebutuhanData.size() > 0) {
-                        shimmerLayout.stopShimmer();
-                        shimmerLayout.setVisibility(View.GONE);
 
-                        rvDonasiku.setVisibility(View.VISIBLE);
-                        DaftarPembayaranAdapter daftarPembayaranAdapter = new DaftarPembayaranAdapter(getContext(), bayarKebutuhanData, keyItem);
+                        Query DbRefKeb = FirebaseDatabase.getInstance().getReference().child("Kebutuhan").child(npsnapshot.getKey());
+                        DbRefKeb.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot kebutuhan) {
+                                if (kebutuhan.exists()) {
+                                    if (kebutuhan.child("jenis_kebutuhan").getValue().equals("Kebutuhan Khusus")) {
+                                        Object foto_bukti = npsnapshot.child("foto_bukti_donasi").getValue();
+                                        if (foto_bukti == null) { // bukan donasi umum dan sudah di verifikasi
+                                            BayarKebutuhanData list = npsnapshot.getValue(BayarKebutuhanData.class);
+                                            bayarKebutuhanData.add(list);
+                                            keyItem.add(npsnapshot.getKey());
+                                        }
 
-                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-                        linearLayoutManager.setReverseLayout(true);
-                        linearLayoutManager.setStackFromEnd(true);
-                        rvDonasiku.setLayoutManager(linearLayoutManager);
-                        rvDonasiku.setAdapter(daftarPembayaranAdapter);
-                    } else {
-                        shimmerLayout.stopShimmer();
-                        shimmerLayout.setVisibility(View.GONE);
-                        rvDonasiku.setVisibility(View.GONE);
-                        tv_no_data.setVisibility(View.VISIBLE);
+                                    }
+                                    if (bayarKebutuhanData.size() > 0) {
+                                        shimmerLayout.stopShimmer();
+                                        shimmerLayout.setVisibility(View.GONE);
+
+                                        rvDonasiku.setVisibility(View.VISIBLE);
+                                        DaftarPembayaranAdapter daftarPembayaranAdapter = new DaftarPembayaranAdapter(getContext(), bayarKebutuhanData, keyItem);
+
+                                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+                                        linearLayoutManager.setReverseLayout(true);
+                                        linearLayoutManager.setStackFromEnd(true);
+                                        rvDonasiku.setLayoutManager(linearLayoutManager);
+                                        rvDonasiku.setAdapter(daftarPembayaranAdapter);
+                                    } else {
+                                        shimmerLayout.stopShimmer();
+                                        shimmerLayout.setVisibility(View.GONE);
+                                        rvDonasiku.setVisibility(View.GONE);
+                                    }
+                                }
+                            }
+
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
                     }
 
                 }else{
@@ -161,6 +174,7 @@ public class PembayaranFragment extends Fragment {
 
             }
         });
+
     }
 
     private void setOnClickListener() {

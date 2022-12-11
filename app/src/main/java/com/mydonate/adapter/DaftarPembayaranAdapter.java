@@ -1,14 +1,12 @@
 package com.mydonate.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,11 +19,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.jpvs0101.currencyfy.Currencyfy;
 import com.mydonate.R;
 import com.mydonate.data.BayarKebutuhanData;
-import com.mydonate.data.KebutuhanData;
-import com.mydonate.data.RiwayatPembayaranData;
-import com.mydonate.fragment.UploadBuktiPembayaranFragment;
 import com.mydonate.fragment.UploadBuktiPenyerahanFragment;
 
 import java.util.ArrayList;
@@ -57,7 +53,7 @@ public class DaftarPembayaranAdapter extends RecyclerView.Adapter<DaftarPembayar
     }
 
     @Override
-    public void onBindViewHolder(@NonNull daftarPembayaranViewholder holder, int position) {
+    public void onBindViewHolder(@NonNull daftarPembayaranViewholder holder, @SuppressLint("RecyclerView") int position) {
 
         BayarKebutuhanData id = bayarKebutuhanData.get(position);
 
@@ -72,7 +68,10 @@ public class DaftarPembayaranAdapter extends RecyclerView.Adapter<DaftarPembayar
                     nominal_kebutuhan = snapshot.child("biaya_kebutuhan").getValue(String.class);
 
                     holder.namaKebutuhan.setText(nama_kebutuhan);
-                    holder.nominalBayar.append(nominal_kebutuhan);
+
+                    String biaya_kebutuhan_conv = nominal_kebutuhan.replaceAll("[^a-zA-Z0-9]", "");
+                    holder.nominalBayar.setText("Rp. " + Currencyfy.currencyfy(Double.parseDouble((biaya_kebutuhan_conv)), false, false));
+
 
                     DatabaseReference dbRef2 = FirebaseDatabase.getInstance().getReference().child("Users").child(id_pengurus);
                     dbRef2.addValueEventListener(new ValueEventListener() {

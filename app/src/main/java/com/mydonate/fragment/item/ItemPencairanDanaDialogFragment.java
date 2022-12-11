@@ -1,5 +1,7 @@
 package com.mydonate.fragment.item;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -24,7 +26,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.jpvs0101.currencyfy.Currencyfy;
 import com.mydonate.R;
@@ -34,8 +35,6 @@ import com.mydonate.data.KebutuhanData;
 import com.mydonate.data.PengajuanPencairanDanaData;
 
 import java.util.ArrayList;
-
-import static android.content.ContentValues.TAG;
 
 public class ItemPencairanDanaDialogFragment extends BottomSheetDialogFragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
@@ -81,12 +80,20 @@ public class ItemPencairanDanaDialogFragment extends BottomSheetDialogFragment i
 
         for (int i = 0; i < kebutuhanDataList.size(); i++) {
             KebutuhanData id = kebutuhanDataList.get(i);
-            spinner_nama_kebutuhan.add(id.getNama_kebutuhan());
-            spinner_detail_kebutuhan.add(id.getDetail_kebutuhan());
-            spinner_biaya_kebutuhan.add(id.getBiaya_kebutuhan());
 
-            SpinnerTujuanKebutuhanAdapter spinner = new SpinnerTujuanKebutuhanAdapter(view.getContext(), spinner_nama_kebutuhan, spinner_detail_kebutuhan, spinner_id_kebutuhan);
-            sp_pilihan_kebutuhan.setAdapter(spinner);
+            // cek kebutuhan sudah selesai atau belum
+            String kebutuhan = id.getBiaya_kebutuhan();
+            String biaya_kebutuhan_conv = kebutuhan.replaceAll("[^a-zA-Z0-9]", "");
+            Double sisa = Double.parseDouble(biaya_kebutuhan_conv);
+            if (sisa > 0) {
+                spinner_nama_kebutuhan.add(id.getNama_kebutuhan());
+                spinner_detail_kebutuhan.add(id.getJenis_kebutuhan());
+                spinner_biaya_kebutuhan.add(id.getBiaya_kebutuhan());
+
+                SpinnerTujuanKebutuhanAdapter spinner = new SpinnerTujuanKebutuhanAdapter(view.getContext(), spinner_nama_kebutuhan, spinner_detail_kebutuhan, spinner_id_kebutuhan);
+                sp_pilihan_kebutuhan.setAdapter(spinner);
+            }
+
         }
         return view;
     }
@@ -180,7 +187,7 @@ public class ItemPencairanDanaDialogFragment extends BottomSheetDialogFragment i
     private void enableButton() {
         if (getActivity() != null && isAdded()) {
             btn_ajukan.setBackground(getResources().getDrawable(R.drawable.background_login_button));
-            btn_ajukan.setTextColor(getResources().getColor(R.color.white));
+            btn_ajukan.setTextColor(getResources().getColor(R.color.darkerOrange));
             btn_ajukan.setText("Ajukan Permohonan");
             btn_ajukan.setEnabled(true);
         }
@@ -228,27 +235,23 @@ public class ItemPencairanDanaDialogFragment extends BottomSheetDialogFragment i
     private void ajukanPermohonan() {
         progressBar.setVisibility(View.VISIBLE);
         // cek apakah sudah ada atau belum
-        ref_pengajuan.orderByChild("id_kebutuhan").equalTo(Getid_kebutuhan).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    Toast.makeText(getContext(), "Kebutuhan Sudah Diajukan", Toast.LENGTH_LONG).show();
+        try {
+            ref_pengajuan.orderByChild("id_kebutuhan").equalTo(Getid_kebutuhan).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (!snapshot.exists()) {
+                        savePengajuan();
+                    }
+                }
 
-                }else{
-                    savePengajuan();
-
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
                 }
-            }
+            });
+        } catch (Exception e) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
-
+        }
 
 
     }

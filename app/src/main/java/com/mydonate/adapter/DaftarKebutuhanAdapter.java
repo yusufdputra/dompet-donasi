@@ -1,6 +1,5 @@
 package com.mydonate.adapter;
 
-import static android.content.ContentValues.TAG;
 import static com.mydonate.activity.HelperActivity.validasiNominal;
 
 import android.annotation.SuppressLint;
@@ -11,7 +10,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -196,7 +194,7 @@ public class DaftarKebutuhanAdapter extends RecyclerView.Adapter {
           if (snapshot.exists()) {
             String biaya_kebutuhan = snapshot.child("biaya_kebutuhan").getValue(String.class);
             biaya_kebutuhan_conv[0] = biaya_kebutuhan.replaceAll("[^a-zA-Z0-9]", "");
-            viewHolder.terkumpul.setText("Dari Rp. " + Currencyfy.currencyfy(Double.parseDouble((biaya_kebutuhan_conv[0])), false, false));
+            viewHolder.terkumpul.setText("Total Rp. " + Currencyfy.currencyfy(Double.parseDouble((biaya_kebutuhan_conv[0])), false, false));
           }
         }
 

@@ -78,6 +78,7 @@ public class PengajuanPencairanDanaFragment extends Fragment {
         Dbref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                pencairanDanaData.clear();
                 if (snapshot.exists()) {
                     for (DataSnapshot npSnapshot : snapshot.getChildren()) {
                         PengajuanPencairanDanaData list = npSnapshot.getValue(PengajuanPencairanDanaData.class);

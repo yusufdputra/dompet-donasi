@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/drawable/background_bottom_sheet.xml" value="0.35208333333333336" />
+        <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/drawable/background_disable_button.xml" value="0.35208333333333336" />
+        <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/drawable/background_login_button.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/drawable/background_splash.xml" value="0.3452502553626149" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/drawable/custom_pregressbar.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/drawable/gradient_bg_tabview.xml" value="0.3452502553626149" />
@@ -36,6 +38,8 @@
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_home_admin.xml" value="0.25" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_home_donatur.xml" value="0.32533197139938713" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_home_pengurus.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_item_pencairan_dana_list_dialog.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_list_laporan_keuangan.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_login.xml" value="0.3475" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_pengajuan_pencairan_dana.xml" value="0.17604166666666668" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_penyerahan_pu.xml" value="0.33177083333333335" />

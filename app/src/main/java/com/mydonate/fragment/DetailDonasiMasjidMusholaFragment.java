@@ -3,8 +3,6 @@ package com.mydonate.fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +24,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.midtrans.sdk.corekit.callback.TransactionFinishedCallback;
 import com.midtrans.sdk.corekit.core.MidtransSDK;
-import com.midtrans.sdk.corekit.core.themes.CustomColorTheme;
 import com.midtrans.sdk.corekit.models.snap.TransactionResult;
 import com.midtrans.sdk.uikit.SdkUIFlowBuilder;
 import com.mydonate.BuildConfig;
@@ -46,7 +41,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Random;
 
 public class DetailDonasiMasjidMusholaFragment extends Fragment implements View.OnClickListener, TransactionFinishedCallback {
 
@@ -94,7 +88,8 @@ public class DetailDonasiMasjidMusholaFragment extends Fragment implements View.
                 .setClientKey(BuildConfig.MERCHANT_CLIENT_KEY)
                 .setTransactionFinishedCallback(this)
                 .enableLog(true)
-                .setColorTheme(new CustomColorTheme("#F57F08", "#F5AC08", "#72FDAF00"))
+
+//                .setColorTheme(new CustomColorTheme("#F57F08", "#F5AC08", "#72FDAF00"))
                 .buildSDK()
         ;
     }
@@ -231,7 +226,8 @@ public class DetailDonasiMasjidMusholaFragment extends Fragment implements View.
         }
     }
 
-    @Override
+
+  @Override
     public void onTransactionFinished(TransactionResult transactionResult) {
         String order_id, payment_type, status_message, transaction_id, total_bayar, transaction_time, status_code, product_name, url_pdf;
         product_name = UidKebutuhan;
@@ -239,7 +235,8 @@ public class DetailDonasiMasjidMusholaFragment extends Fragment implements View.
         String idUser = currentUser.getUid();
 
         if (transactionResult.getResponse() != null) {
-            switch (transactionResult.getStatus()) {
+
+          switch (transactionResult.getStatus()) {
                 case TransactionResult.STATUS_SUCCESS:
                     Toast.makeText(this.getContext(), "Transaksi Selesai. ID " + transactionResult.getResponse().getTransactionId(), Toast.LENGTH_LONG).show();
                     order_id = transactionResult.getResponse().getOrderId();
@@ -275,13 +272,9 @@ public class DetailDonasiMasjidMusholaFragment extends Fragment implements View.
 
 
         } else if (transactionResult.isTransactionCanceled()) {
-            order_id = transactionResult.getResponse().getOrderId();
-            mDbTransaksiPembayaran.child(order_id).removeValue();
             Toast.makeText(this.getContext(), "Transaksi dibatalkan.", Toast.LENGTH_LONG).show();
         } else {
             if (transactionResult.getStatus().equalsIgnoreCase(TransactionResult.STATUS_INVALID)) {
-                order_id = transactionResult.getResponse().getOrderId();
-                mDbTransaksiPembayaran.child(order_id).removeValue();
                 Toast.makeText(this.getContext(), "Transaksi Invalid.", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(this.getContext(), "Transaksi Selesai.", Toast.LENGTH_LONG).show();
