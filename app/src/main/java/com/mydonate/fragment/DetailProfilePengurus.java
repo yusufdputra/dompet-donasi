@@ -22,7 +22,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,6 +41,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.mydonate.R;
 import com.mydonate.activity.AboutActivity;
 import com.mydonate.activity.AuthActivity;
@@ -62,8 +62,8 @@ public class DetailProfilePengurus extends Fragment implements View.OnClickListe
   int Image_Request_Code1 = 1;
   private TextInputLayout error_nama_masjid, error_tempat_masjid, error_nama_pengurus, error_phone;
   private EditText nama_masj, alamat_masj, nama_peng, phone_peng;
-  private ImageView iv_tempat, iv_edit, iv_add_kebutuhan, iv_back, iv_logout, iv_about;
-  private CardView cv_upload_foto;
+  private ImageView iv_edit, iv_add_kebutuhan, iv_back, iv_logout, iv_about;
+  private RoundedImageView iv_tempat;
   private TextView tv_title, tv_pencairan_dana;
   private String Uid, Unama_tempat, Ualamat_tempat, Ufoto_tempat, Unama, Uphone, Uemail, Ufoto_ktp, Ufoto_surat, Ualamat_pengurus, Utipe_tempat, Ufoto_sim, Ufoto_imb, edit_kebutuhan_key;
   private Button iv_batal, iv_simpan;
@@ -253,7 +253,6 @@ public class DetailProfilePengurus extends Fragment implements View.OnClickListe
   }
 
   private void setDisableForm() {
-    cv_upload_foto.setVisibility(View.GONE);
     error_nama_masjid.setEnabled(false);
     error_tempat_masjid.setEnabled(false);
     error_nama_pengurus.setEnabled(false);
@@ -262,7 +261,6 @@ public class DetailProfilePengurus extends Fragment implements View.OnClickListe
   }
 
   private void setEnableForm() {
-    cv_upload_foto.setVisibility(View.VISIBLE);
     error_nama_masjid.setEnabled(true);
     error_tempat_masjid.setEnabled(true);
     error_nama_pengurus.setEnabled(true);
@@ -273,7 +271,6 @@ public class DetailProfilePengurus extends Fragment implements View.OnClickListe
   private void setClickListener() {
     iv_simpan.setOnClickListener(this);
     iv_batal.setOnClickListener(this);
-    cv_upload_foto.setOnClickListener(this);
     iv_edit.setOnClickListener(this);
     iv_logout.setOnClickListener(this);
     iv_add_kebutuhan.setOnClickListener(this);
@@ -468,9 +465,8 @@ public class DetailProfilePengurus extends Fragment implements View.OnClickListe
     iv_edit = view.findViewById(R.id.iv_edit);
     iv_logout = view.findViewById(R.id.iv_logout);
     iv_back = view.findViewById(R.id.iv_back);
-    cv_upload_foto = view.findViewById(R.id.cv_upload_foto);
     tv_title = view.findViewById(R.id.tv_title);
-    iv_tempat = view.findViewById(R.id.imageView);
+    iv_tempat = view.findViewById(R.id.iv_background);
     nama_masj = view.findViewById(R.id.tv_edit_nama_tempat);
     alamat_masj = view.findViewById(R.id.tv_edit_alamat_tempat);
     nama_peng = view.findViewById(R.id.tv_edit_nama_pengurus);

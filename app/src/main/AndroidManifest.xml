@@ -71,6 +71,18 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
+            android:name=".activity.Berita.BeritaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".activity.Berita.CreateEditBeritaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".activity.Berita.DetailBeritaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme"

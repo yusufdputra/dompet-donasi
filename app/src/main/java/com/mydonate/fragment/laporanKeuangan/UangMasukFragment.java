@@ -1,5 +1,7 @@
 package com.mydonate.fragment.laporanKeuangan;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -29,8 +31,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
-import static android.content.ContentValues.TAG;
 
 public class UangMasukFragment extends Fragment {
     private static String id_user;
@@ -110,14 +110,16 @@ public class UangMasukFragment extends Fragment {
                                                 transaksiPembayaranData.add(list);
                                                 keyItem.add(npsnapshots.getKey());
 
-                                                Log.i(TAG, "onDataChange: "+npsnapshots.getKey());
                                                 // akumulasikan jumlah dana masuk
                                                 String bayar = npsnapshots.child("total_bayar").getValue(String.class);
                                                 JumlahDanaMasuk = JumlahDanaMasuk + Double.parseDouble(bayar);
+                                                Log.i(TAG, "onDataChange: " + JumlahDanaMasuk.toString());
+
                                             }
 
                                             if (transaksiPembayaranData.size() > 0) {
 
+                                                Log.i(TAG, "onDataChange2: " + JumlahDanaMasuk.toString());
 
                                                 RiwayatDonasiAdapter riwayatDonasiAdapter = new RiwayatDonasiAdapter(getContext(), transaksiPembayaranData, keyItem, "laporan");
                                                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -132,6 +134,8 @@ public class UangMasukFragment extends Fragment {
                                                 rv_riwayat.setVisibility(View.GONE);
                                                 tv_not_found.setVisibility(View.VISIBLE);
                                             }
+
+                                            Log.i(TAG, "onDataChange: 3" + JumlahDanaMasuk.toString());
 
                                             shimmerLayout.stopShimmer();
                                             shimmerLayout.setVisibility(View.GONE);

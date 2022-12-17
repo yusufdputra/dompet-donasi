@@ -33,8 +33,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.mydonate.R;
-import com.mydonate.activity.AdminActivity;
 import com.mydonate.activity.AuthActivity;
+import com.mydonate.activity.Berita.BeritaActivity;
 import com.mydonate.activity.DonasiActivity;
 import com.mydonate.activity.HomeActivity;
 import com.mydonate.activity.ProfilActivity;
@@ -54,8 +54,8 @@ public class HomePengurusFragment extends Fragment implements View.OnClickListen
     public static final String KEY_LAPORAN_KEUANGAN = "LAPORAN_KEUANGAN";
     private RecyclerView rvRiwayatDonasi;
     private ArrayList<Donatur> dataDonatur;
-    private ImageView ivUserPic, ivMenuMasjid, ivMenuDonasiUmum, ivMenuMushola, iv_logout;
-    private ConstraintLayout CLLaporanKeuangan;
+    private ImageView ivUserPic, iv_logout;
+    private ConstraintLayout CLLaporanKeuangan, CLProfile, CLBerita;
     private TextView tvMore, tv_user_name, tv_no_data;
 
     private ArrayList<TransaksiPembayaranData> transaksiPembayaranData;
@@ -92,11 +92,11 @@ public class HomePengurusFragment extends Fragment implements View.OnClickListen
     private void setOnClickListener() {
         tvMore.setOnClickListener(this);
         ivUserPic.setOnClickListener(this);
-        ivMenuMasjid.setOnClickListener(this);
+        CLBerita.setOnClickListener(this);
 //        ivMenuDonasiUmum.setOnClickListener(this);
 
         iv_logout.setOnClickListener(this);
-        ivMenuMushola.setOnClickListener(this);
+        CLProfile.setOnClickListener(this);
         CLLaporanKeuangan.setOnClickListener(this);
     }
 
@@ -218,9 +218,8 @@ public class HomePengurusFragment extends Fragment implements View.OnClickListen
         rvRiwayatDonasi = view.findViewById(R.id.rv_user_donation);
         tvMore = view.findViewById(R.id.tv_more);
         ivUserPic = view.findViewById(R.id.iv_user_profile_pic);
-        ivMenuMasjid = view.findViewById(R.id.iv_menu_masjid);
-        ivMenuDonasiUmum = view.findViewById(R.id.iv_menu_donasi_umum);
-        ivMenuMushola = view.findViewById(R.id.iv_menu_mushola);
+        CLBerita = view.findViewById(R.id.cl_berita);
+        CLProfile = view.findViewById(R.id.cl_profile);
         dataDonatur = new ArrayList<>();
         dataDonatur.addAll(DonaturData.getLastThreeRiwayatDonasi());
         tv_user_name = view.findViewById(R.id.tv_user_name);
@@ -243,24 +242,19 @@ public class HomePengurusFragment extends Fragment implements View.OnClickListen
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.home_frame_layout, fragment).addToBackStack(null).commit();
                 break;
             case R.id.iv_user_profile_pic:
+            case R.id.cl_profile:
                 intent = new Intent(getContext(), ProfilActivity.class);
                 intent.putExtra(HomeActivity.LOGIN_TYPE_KEY_EXTRA, LoginFragment.PENGURUS_LOGIN);
                 startActivity(intent);
 
-                break;
-            case R.id.iv_menu_masjid:
-                intent = new Intent(getContext(), DonasiActivity.class);
-                intent.putExtra(DonasiActivity.DONATION_TYPE_KEY_EXTRA, DONATION_TYPE_MASJID_KEY_EXTRA);
-                startActivity(intent);
                 break;
             case R.id.iv_menu_donasi_umum:
                 intent = new Intent(getContext(), DonasiActivity.class);
                 intent.putExtra(DonasiActivity.DONATION_TYPE_KEY_EXTRA, DONATION_TYPE_UMUM_KEY_EXTRA);
                 startActivity(intent);
                 break;
-            case R.id.iv_menu_mushola:
-                intent = new Intent(getContext(), DonasiActivity.class);
-                intent.putExtra(DonasiActivity.DONATION_TYPE_KEY_EXTRA, DONATION_TYPE_MUSHOLA_KEY_EXTRA);
+            case R.id.cl_berita:
+                intent = new Intent(getContext(), BeritaActivity.class);
                 startActivity(intent);
                 break;
             case R.id.CLLaporanKeuangan:

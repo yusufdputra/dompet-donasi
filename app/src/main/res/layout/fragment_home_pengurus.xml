@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.HomeDonaturFragment">
+    tools:context=".fragment.HomePengurusFragment">
 
     <View
         android:id="@+id/iv_background"
@@ -82,6 +82,7 @@
             tools:ignore="MissingConstraints">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_profile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_small"
@@ -105,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:minLines="2"
-                    android:text="Masjid"
+                    android:text="Profile"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="@+id/iv_menu_masjid"
                     app:layout_constraintStart_toStartOf="@+id/iv_menu_masjid"
@@ -114,7 +115,7 @@
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_mushola"
+                android:id="@+id/cl_berita"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_small"
@@ -130,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="Menu Masjid Icon"
                     android:paddingHorizontal="@dimen/_6sdp"
-                    android:src="@drawable/masjid" />
+                    android:src="@drawable/newspaper" />
 
                 <TextView
                     android:id="@+id/tv_menu_mushola"
@@ -138,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:minLines="2"
-                    android:text="Mushola"
+                    android:text="Berita"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="@+id/iv_menu_mushola"
                     app:layout_constraintStart_toStartOf="@+id/iv_menu_mushola"
