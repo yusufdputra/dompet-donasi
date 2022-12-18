@@ -1,22 +1,21 @@
 package com.mydonate.fragment;
 
-import static android.content.ContentValues.TAG;
-
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,16 +30,17 @@ import com.google.firebase.storage.StorageReference;
 import com.jpvs0101.currencyfy.Currencyfy;
 import com.mydonate.R;
 import com.mydonate.adapter.DaftarKebutuhanAdapter;
+import com.mydonate.adapter.ItemBeritaSmallAdapter;
 import com.mydonate.adapter.RiwayatDonasiAdapter;
-import com.mydonate.data.BayarKebutuhanData;
+import com.mydonate.data.BeritaData;
 import com.mydonate.data.Donatur;
 import com.mydonate.data.KebutuhanData;
 import com.mydonate.data.TransaksiPembayaranData;
-import com.rd.PageIndicatorView;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class DetailMasjidMusholaFragment extends Fragment implements View.OnClickListener {
     public final static String KEY_ID = "KEY_ID";
@@ -48,19 +48,19 @@ public class DetailMasjidMusholaFragment extends Fragment implements View.OnClic
     private String id_item, UnamaPengurus, Unama_masjid, Ualamat_masjid, Ualamat_pengurus, Uemail, Uphone, Utipe_tempat, Ufoto_tempat, edit_kebutuhan_key;
     private TextView deskripsi, title, tv_no_data_kebutuhan, tv_no_data_riwayatDonasi, tv_no_data_buktiPenyerahan, NamaMasjid, AlamatMasjid, NamaPengurus, AlamatPengurus, EmailPengurus, PhonePengurus, Deposit;
     private ImageView foto_tempat, iv_back;
-    private RecyclerView rvRiwayatDonasi, rvkebutuhan;
+    private RecyclerView rvRiwayatDonasi, rvkebutuhan, rv_slide_berita;
     private ArrayList<Donatur> dataDonatur;
     private ArrayList<KebutuhanData> kebutuhanData;
+    private ArrayList<BeritaData> beritaData;
     private String Uid;
+    private TextView tv_more_berita;
+    private LinearLayout ll_berita;
+    private ItemBeritaSmallAdapter adapter;
 
     private ArrayList<TransaksiPembayaranData> transaksiPembayaranData;
-    private ArrayList<String> keyItem ;
+    private ArrayList<String> keyItem;
+    private ArrayList<String> keyBerita;
 
-    private ArrayList<BayarKebutuhanData> bayarKebutuhanData;
-
-    private ViewPager viewPager;
-    private PageIndicatorView pageIndicatorView;
-    private ShimmerFrameLayout shimmerImageView;
 
     ShimmerFrameLayout shimmerLayout, shimmer_kebutuhan;
 
@@ -76,20 +76,59 @@ public class DetailMasjidMusholaFragment extends Fragment implements View.OnClic
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_detail_masjid, container, false);
-        if (getArguments() != null) {
+        init(view);
+        setOnClickListener();
 
+        if (getArguments() != null) {
             Uid = getArguments().getString(KEY_ID);
             GetDetail();
             GetKebutuhan();
             getListDonasi();
-
+            getListBerita();
         }
 
-        init(view);
-        setOnClickListener();
-
-
         return view;
+    }
+
+    private void getListBerita() {
+        if (beritaData != null) {
+            beritaData.clear();
+            keyBerita.clear();
+        } else {
+            beritaData = new ArrayList<>();
+            keyBerita = new ArrayList<>();
+        }
+
+        Query db = FirebaseDatabase.getInstance().getReference().child("Berita").orderByChild("id_pengurus").equalTo(Uid).limitToLast(5);
+        db.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        BeritaData data = dataSnapshot.getValue(BeritaData.class);
+                        beritaData.add(data);
+                        keyBerita.add(dataSnapshot.getKey());
+                    }
+                    Collections.reverse(beritaData);
+                    Collections.reverse(keyBerita);
+
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+                    linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+                    rv_slide_berita.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false));
+                    adapter = new ItemBeritaSmallAdapter(getContext(), beritaData, keyBerita);
+                    rv_slide_berita.setAdapter(adapter);
+                    ll_berita.setVisibility(View.VISIBLE);
+                } else {
+                    ll_berita.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
 
@@ -341,9 +380,6 @@ public class DetailMasjidMusholaFragment extends Fragment implements View.OnClic
                 Picasso.get().load(uri).fetch(new Callback() {
                     @Override
                     public void onSuccess() {
-                        shimmerImageView.stopShimmer();
-                        shimmerImageView.setVisibility(View.GONE);
-                        iv_target.setVisibility(View.VISIBLE);
                         iv_target.setAlpha(0f);
                         Picasso.get()
                                 .load(uri)
@@ -355,9 +391,7 @@ public class DetailMasjidMusholaFragment extends Fragment implements View.OnClic
 
                     @Override
                     public void onError(Exception e) {
-                        shimmerImageView.stopShimmer();
-                        shimmerImageView.setVisibility(View.GONE);
-                        iv_target.setVisibility(View.VISIBLE);
+                        Toast.makeText(getContext(), "Terjadi kesalahan saat mengunduh gambar", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -384,19 +418,22 @@ public class DetailMasjidMusholaFragment extends Fragment implements View.OnClic
         PhonePengurus = view.findViewById(R.id.tv_phone_pengurus);
         Deposit = view.findViewById(R.id.tv_deposit);
 
-        shimmerImageView = view.findViewById(R.id.shimmerImageView);
+        rv_slide_berita = view.findViewById(R.id.rv_slide_berita);
+        tv_more_berita = view.findViewById(R.id.tv_more_berita);
+        ll_berita = view.findViewById(R.id.ll_list_berita);
+
         shimmerLayout = view.findViewById(R.id.shimmerlayout);
         shimmer_kebutuhan = view.findViewById(R.id.shimmerlayout_kebutuhan);
     }
 
     private void setOnClickListener() {
         iv_back.setOnClickListener(this);
+        tv_more_berita.setOnClickListener(this);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        shimmerImageView.startShimmer();
         shimmerLayout.startShimmer();
         shimmer_kebutuhan.startShimmer();
     }

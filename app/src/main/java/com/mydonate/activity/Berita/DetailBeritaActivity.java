@@ -1,6 +1,6 @@
 package com.mydonate.activity.Berita;
 
-import static com.mydonate.adapter.ItemBeritaAdapter.KEY_ID_BERITA;
+import static com.mydonate.adapter.ItemBeritaBigAdapter.KEY_ID_BERITA;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.mydonate.R;
-import com.mydonate.adapter.ItemBeritaAdapter;
+import com.mydonate.adapter.ItemBeritaBigAdapter;
 import com.mydonate.fragment.LoginFragment;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -53,7 +53,7 @@ public class DetailBeritaActivity extends AppCompatActivity {
     Intent intent = getIntent();
     if (intent != null) {
       idBerita = intent.getStringExtra(KEY_ID_BERITA);
-      String idPengurus = intent.getStringExtra(ItemBeritaAdapter.KEY_ID_PENGURUS);
+      String idPengurus = intent.getStringExtra(ItemBeritaBigAdapter.KEY_ID_PENGURUS);
       getBerita(idPengurus);
     }
 

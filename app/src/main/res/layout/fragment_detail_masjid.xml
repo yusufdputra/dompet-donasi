@@ -6,82 +6,89 @@
     android:layout_height="wrap_content"
     tools:context="com.mydonate.fragment.DetailMasjidMusholaFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <View
-            android:id="@+id/iv_background"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_140sdp"
-            android:background="@drawable/img_bg_login"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/iv_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
-            android:contentDescription="Kembali"
-            android:src="@drawable/ic_baseline_chevron_left_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:ellipsize="end"
-            android:fontFamily="sans-serif"
-            android:maxLines="1"
-            android:text="Detail "
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/iv_back" />
-
-        <LinearLayout
-            android:id="@+id/llImageview"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_160sdp"
-            android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginEnd="@dimen/_12sdp"
-            android:background="@drawable/background_radius20"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title">
+            android:layout_height="wrap_content">
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/_160sdp"
                 android:contentDescription="Foto Masjid"
                 android:scaleType="centerCrop"
-                android:src="@color/lighGray"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title"
-                app:riv_corner_radius="20dp" />
+                android:src="@drawable/no_image"
+                app:layout_constraintTop_toTopOf="parent"
+                app:riv_corner_radius_bottom_left="@dimen/_20sdp"
+                app:riv_corner_radius_bottom_right="@dimen/_20sdp" />
 
-            <!--        shimmer foto atas-->
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmerImageView"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/color_shimmer"
-                app:layout_constraintCircleRadius="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title">
+                android:layout_height="@dimen/_40sdp"
+                android:background="@color/black_trans"
+                app:layout_constraintTop_toTopOf="parent">
 
-            </com.facebook.shimmer.ShimmerFrameLayout>
+                <ImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:contentDescription="Kembali"
+                    android:src="@drawable/ic_baseline_chevron_left_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="sans-serif"
+                    android:maxLines="1"
+                    android:text="Detail "
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_list_berita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-50dp"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_slide_berita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                tools:listitem="@layout/item_slide_news_small" />
+
+            <TextView
+                android:id="@+id/tv_more_berita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:text="Lebih Banyak Berita"
+                android:textAlignment="textEnd"
+                android:textStyle="bold" />
         </LinearLayout>
 
 
@@ -93,31 +100,26 @@
             android:text="Profil"
             android:textColor="@color/black"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/llImageview"
-            app:layout_constraintStart_toStartOf="@+id/llImageview"
-            app:layout_constraintTop_toBottomOf="@+id/llImageview" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_more_berita" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
             android:paddingStart="@dimen/_12sdp"
             android:paddingEnd="@dimen/_12sdp"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:textColor="@color/black">
 
             <LinearLayout
                 android:id="@+id/llNamaMasjid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:gravity="top"
-                app:layout_constraintStart_toStartOf="parent"
+                android:orientation="horizontal"
                 android:padding="@dimen/margin_small"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
@@ -139,10 +141,10 @@
                 android:id="@+id/llAlamatM"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:gravity="top"
-                app:layout_constraintStart_toStartOf="parent"
+                android:orientation="horizontal"
                 android:padding="@dimen/margin_small"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/llNamaMasjid">
 
                 <TextView
@@ -164,10 +166,10 @@
                 android:id="@+id/llPengurus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:gravity="top"
-                app:layout_constraintStart_toStartOf="parent"
+                android:orientation="horizontal"
                 android:padding="@dimen/margin_small"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/llAlamatM">
 
                 <TextView
@@ -189,10 +191,10 @@
                 android:id="@+id/llAlamatPengurus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:gravity="top"
-                app:layout_constraintStart_toStartOf="parent"
+                android:orientation="horizontal"
                 android:padding="@dimen/margin_small"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/llPengurus">
 
                 <TextView
@@ -214,10 +216,10 @@
                 android:id="@+id/llEmailPengurus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:gravity="top"
-                app:layout_constraintStart_toStartOf="parent"
+                android:orientation="horizontal"
                 android:padding="@dimen/margin_small"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/llAlamatPengurus">
 
                 <TextView
@@ -230,20 +232,20 @@
                     android:id="@+id/tv_email_pengurus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="2"
-                    android:textColorLink="@color/blueLink"
                     android:autoLink="email"
-                    android:textAlignment="textEnd" />
+                    android:maxLines="2"
+                    android:textAlignment="textEnd"
+                    android:textColorLink="@color/blueLink" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llPhonePengurus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:gravity="top"
-                app:layout_constraintStart_toStartOf="parent"
+                android:orientation="horizontal"
                 android:padding="@dimen/margin_small"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/llEmailPengurus">
 
                 <TextView
@@ -256,20 +258,20 @@
                     android:id="@+id/tv_phone_pengurus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="2"
                     android:autoLink="phone"
-                    android:textColorLink="@color/blueLink"
-                    android:textAlignment="textEnd" />
+                    android:maxLines="2"
+                    android:textAlignment="textEnd"
+                    android:textColorLink="@color/blueLink" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llDeposit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:gravity="top"
-                app:layout_constraintStart_toStartOf="parent"
+                android:orientation="horizontal"
                 android:padding="@dimen/margin_small"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/llPhonePengurus">
 
                 <TextView
@@ -283,8 +285,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="2"
-                    android:textColor="@color/black"
-                    android:textAlignment="textEnd" />
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -296,34 +298,28 @@
             android:padding="@dimen/_12sdp"
             android:text="Kebutuhan"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/LLKebutuhan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_no_data1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:text="@string/no_data"
                 android:textAlignment="center"
-                 />
+                android:visibility="gone" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:visibility="gone"
                 android:id="@+id/rv_kebutuhan"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="@dimen/_250sdp"
+                android:fitsSystemWindows="true"
+                android:visibility="gone" />
 
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmerlayout_kebutuhan"
@@ -357,19 +353,13 @@
             android:padding="@dimen/_12sdp"
             android:text="Histori Donatur"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/LLKebutuhan" />
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/llDonatur"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_no_data2"
@@ -380,14 +370,14 @@
                 android:visibility="gone" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:visibility="gone"
                 android:id="@+id/rv_riwayat_donasi"
                 android:layout_width="match_parent"
-                android:fitsSystemWindows="true"
-                attrs:listitem="@layout/item_riwayat_donasi"
-                android:layout_height="@dimen/_500sdp"
+                android:layout_height="@dimen/_250sdp"
                 android:layout_marginStart="@dimen/margin_small"
-                android:layout_marginEnd="@dimen/margin_small" />
+                android:layout_marginEnd="@dimen/margin_small"
+                android:fitsSystemWindows="true"
+                android:visibility="gone"
+                attrs:listitem="@layout/item_riwayat_donasi" />
 
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmerlayout"
@@ -417,6 +407,6 @@
         </LinearLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </ScrollView>

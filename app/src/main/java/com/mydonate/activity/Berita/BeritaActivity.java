@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.mydonate.R;
-import com.mydonate.adapter.ItemBeritaAdapter;
+import com.mydonate.adapter.ItemBeritaBigAdapter;
 import com.mydonate.data.BeritaData;
 import com.mydonate.fragment.LoginFragment;
 
@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class BeritaActivity extends AppCompatActivity {
-  ItemBeritaAdapter adapter;
+  ItemBeritaBigAdapter adapter;
   private ImageView ivBack;
   private LinearLayout ll_tambah;
   private RecyclerView rv_riwayat_berita;
@@ -147,7 +147,7 @@ public class BeritaActivity extends AppCompatActivity {
           tv_no_data.setVisibility(View.GONE);
 
           rv_riwayat_berita.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
-          adapter = new ItemBeritaAdapter(getApplicationContext(), beritaDataArrayList, keyItem);
+          adapter = new ItemBeritaBigAdapter(getApplicationContext(), beritaDataArrayList, keyItem);
           rv_riwayat_berita.setAdapter(adapter);
         } else {
           shimmerlayout.stopShimmer();

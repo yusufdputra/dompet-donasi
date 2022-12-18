@@ -1,7 +1,7 @@
 package com.mydonate.activity.Berita;
 
 import static com.mydonate.activity.HelperActivity.validasiInput;
-import static com.mydonate.adapter.ItemBeritaAdapter.KEY_ID_BERITA;
+import static com.mydonate.adapter.ItemBeritaBigAdapter.KEY_ID_BERITA;
 
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
