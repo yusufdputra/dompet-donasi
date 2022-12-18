@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="Kembali"
             android:src="@drawable/ic_round_edit_note_24"
-            android:tint="@color/black"
+            android:tint="@color/blueLink"
             tools:ignore="UseAppTint" />
 
         <TextView
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="Ubah"
-            android:textColor="@color/black"
+            android:textColor="@color/blueLink"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -142,6 +142,7 @@
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cv_image"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:elevation="0px"

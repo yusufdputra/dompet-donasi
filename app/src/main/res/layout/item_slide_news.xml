@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="300dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:elevation="0dp"
+    android:paddingHorizontal="@dimen/_12sdp"
     android:paddingVertical="@dimen/list_item_spacing">
 
     <androidx.cardview.widget.CardView
@@ -21,6 +22,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:src="@drawable/no_image"
                 android:id="@+id/iv_background"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_100sdp"
@@ -33,7 +35,18 @@
                 android:ellipsize="marquee"
                 android:maxLines="2"
                 android:padding="@dimen/list_item_spacing"
+                android:singleLine="true"
                 android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="2"
+                android:paddingHorizontal="@dimen/_12sdp"
+                android:paddingBottom="@dimen/_12sdp"
+                android:textColor="@color/grey_font" />
 
             <TextView
                 android:id="@+id/tv_tanggal"
@@ -42,7 +55,9 @@
                 android:ellipsize="end"
                 android:paddingHorizontal="@dimen/_12sdp"
                 android:paddingBottom="@dimen/_12sdp"
+                android:textAlignment="viewEnd"
                 android:singleLine="true"
+                android:textSize="12sp"
                 android:textColor="@color/grey_font" />
         </LinearLayout>
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,10 +28,12 @@ import com.mydonate.data.BeritaData;
 import com.mydonate.fragment.LoginFragment;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class BeritaActivity extends AppCompatActivity {
   ItemBeritaAdapter adapter;
-  private ImageView ivBack, ivAdd;
+  private ImageView ivBack;
+  private LinearLayout ll_tambah;
   private RecyclerView rv_riwayat_berita;
   private ArrayList<BeritaData> beritaDataArrayList;
   private ArrayList<String> keyItem;
@@ -44,23 +47,25 @@ public class BeritaActivity extends AppCompatActivity {
     setContentView(R.layout.activity_berita);
 
     init();
-
+    Intent intent = getIntent();
+    if (intent != null) {
+      String idPengurus = intent.getStringExtra(LoginFragment.PENGURUS_LOGIN);
+      if (idPengurus != null) {
+        getBeritaGrid(idPengurus);
+      } else {
+        checkUserPengurus();
+      }
+    }
 
   }
 
   @Override
   protected void onResume() {
     super.onResume();
-    Intent intent = getIntent();
-    if (intent != null) {
-      String idPengurus = intent.getStringExtra(LoginFragment.PENGURUS_LOGIN);
-      getBeritaGrid(idPengurus);
-    } else {
-      checkUser();
-    }
+
   }
 
-  private void checkUser() {
+  private void checkUserPengurus() {
     shimmerlayout.startShimmer();
 
     //cek tipe user
@@ -72,7 +77,7 @@ public class BeritaActivity extends AppCompatActivity {
       public void onDataChange(@NonNull DataSnapshot snapshot) {
         String tipe = snapshot.child("tipe_user").getValue(String.class);
         if (tipe.equals(LoginFragment.PENGURUS_LOGIN)) {
-          ivAdd.setVisibility(View.VISIBLE);
+          ll_tambah.setVisibility(View.VISIBLE);
           getBeritaGrid(userUid);
           isDonatur = false;
         }
@@ -88,7 +93,7 @@ public class BeritaActivity extends AppCompatActivity {
 
   private void init() {
     ivBack = findViewById(R.id.iv_back);
-    ivAdd = findViewById(R.id.iv_add);
+    ll_tambah = findViewById(R.id.ll_tambah);
 
     rv_riwayat_berita = findViewById(R.id.rv_riwayat_berita);
     shimmerlayout = findViewById(R.id.shimmerlayout);
@@ -96,7 +101,7 @@ public class BeritaActivity extends AppCompatActivity {
     titleLayout = findViewById(R.id.tv_title);
     tv_no_data = findViewById(R.id.tv_no_data1);
 
-    ivAdd.setOnClickListener(new View.OnClickListener() {
+    ll_tambah.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         Intent intent = new Intent(getApplicationContext(), CreateEditBeritaActivity.class);
@@ -133,10 +138,13 @@ public class BeritaActivity extends AppCompatActivity {
             keyItem.add(dataSnapshot.getKey());
 
           }
+          Collections.reverse(beritaDataArrayList);
+          Collections.reverse(keyItem);
 
           shimmerlayout.stopShimmer();
           shimmerlayout.setVisibility(View.GONE);
           rv_riwayat_berita.setVisibility(View.VISIBLE);
+          tv_no_data.setVisibility(View.GONE);
 
           rv_riwayat_berita.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
           adapter = new ItemBeritaAdapter(getApplicationContext(), beritaDataArrayList, keyItem);

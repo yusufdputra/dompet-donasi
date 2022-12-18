@@ -40,17 +40,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_back" />
 
-    <ImageView
-        android:id="@+id/iv_add"
+    <LinearLayout
+        android:id="@+id/ll_tambah"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="12dp"
-        android:contentDescription="Kembali"
-        android:src="@drawable/ic_baseline_post_add_24"
+        android:orientation="horizontal"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="tambah"
+            android:src="@drawable/ic_baseline_post_add_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Tambah"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="0dp"

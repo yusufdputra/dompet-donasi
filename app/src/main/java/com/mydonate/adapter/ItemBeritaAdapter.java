@@ -29,88 +29,91 @@ import java.util.ArrayList;
 
 public class ItemBeritaAdapter extends RecyclerView.Adapter<ItemBeritaAdapter.GridViewHolder> implements ViewPager.OnAdapterChangeListener {
 
-    public static final String KEY_ID_BERITA = "KEY_ID_BERITA";
-    public static final String KEY_ID_PENGURUS = "KEY_ID_PENGURUS";
-    private Context mContext;
-    private ArrayList<BeritaData> beritaData = new ArrayList<>();
-    private ArrayList<String> keyItem = new ArrayList<>();
+  public static final String KEY_ID_BERITA = "KEY_ID_BERITA";
+  public static final String KEY_ID_PENGURUS = "KEY_ID_PENGURUS";
+  private Context mContext;
+  private ArrayList<BeritaData> beritaData = new ArrayList<>();
+  private ArrayList<String> keyItem = new ArrayList<>();
 
-    public ItemBeritaAdapter(Context context, ArrayList<BeritaData> beritaDataArrayList, ArrayList<String> keyItem) {
-        this.mContext = context;
-        this.beritaData = beritaDataArrayList;
-        this.keyItem = keyItem;
+  public ItemBeritaAdapter(Context context, ArrayList<BeritaData> beritaDataArrayList, ArrayList<String> keyItem) {
+    this.mContext = context;
+    this.beritaData = beritaDataArrayList;
+    this.keyItem = keyItem;
 
-    }
+  }
 
 
-    @NonNull
-    @Override
-    public ItemBeritaAdapter.GridViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_slide_news, parent, false);
-        return new GridViewHolder(view);
-    }
+  @NonNull
+  @Override
+  public ItemBeritaAdapter.GridViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_slide_news, parent, false);
+    return new GridViewHolder(view);
+  }
 
-    @Override
-    public void onBindViewHolder(@NonNull ItemBeritaAdapter.GridViewHolder holder, @SuppressLint("RecyclerView") int position) {
+  @Override
+  public void onBindViewHolder(@NonNull ItemBeritaAdapter.GridViewHolder holder, @SuppressLint("RecyclerView") int position) {
 //        notifyDataSetChanged();
-        BeritaData id = beritaData.get(position);
-        holder.tv_header.setText(id.getTitle());
-        holder.tv_tanggal.setText(id.getCreated_at());
-        // get
-        //set image to layout
-        StorageReference ref = FirebaseStorage.getInstance().getReference();
-        StorageReference dateRef = ref.child("Berita/" + id.getImage());
-        dateRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+    BeritaData data = beritaData.get(position);
+    holder.tv_header.setText(data.getTitle());
+    holder.tv_tanggal.setText(data.getCreated_at());
+    holder.tv_detail.setText(data.getDetail());
+    if (!data.getImage().equals("")) {
+      //set image to layout
+      StorageReference ref = FirebaseStorage.getInstance().getReference();
+      StorageReference dateRef = ref.child("Berita/" + data.getImage());
+      dateRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        @Override
+        public void onSuccess(Uri uri) {
+          Picasso.get().load(uri).fetch(new Callback() {
             @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).fetch(new Callback() {
-                    @Override
-                    public void onSuccess() {
-                        holder.iv_background.setAlpha(0f);
-                        Picasso.get().load(uri).into(holder.iv_background);
-                        holder.iv_background.animate().setDuration(200).alpha(1f).start();
-                    }
-
-                    @Override
-                    public void onError(Exception e) {
-
-                    }
-                });
+            public void onSuccess() {
+              holder.iv_background.setAlpha(0f);
+              Picasso.get().load(uri).into(holder.iv_background);
+              holder.iv_background.animate().setDuration(200).alpha(1f).start();
             }
-        });
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(mContext, DetailBeritaActivity.class);
-                intent.putExtra(KEY_ID_BERITA, getItemId(position));
-                intent.putExtra(KEY_ID_PENGURUS, id.getId_pengurus());
-                mContext.startActivity(intent);
+            public void onError(Exception e) {
+
             }
-        });
-    }
-
-    @Override
-    public int getItemCount() {
-        return beritaData.size();
-    }
-
-
-    @Override
-    public void onAdapterChanged(@NonNull ViewPager viewPager, @Nullable PagerAdapter oldAdapter, @Nullable PagerAdapter newAdapter) {
-
-    }
-
-    public class GridViewHolder extends RecyclerView.ViewHolder {
-        ImageView iv_background;
-        TextView tv_header, tv_tanggal;
-
-        public GridViewHolder(@NonNull View itemView) {
-            super(itemView);
-            iv_background = itemView.findViewById(R.id.iv_background);
-            tv_tanggal = itemView.findViewById(R.id.tv_tanggal);
-            tv_header = itemView.findViewById(R.id.tv_header);
-
+          });
         }
+      });
     }
+    holder.itemView.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        Intent intent = new Intent(mContext, DetailBeritaActivity.class);
+        intent.putExtra(KEY_ID_BERITA, keyItem.get(position));
+        intent.putExtra(KEY_ID_PENGURUS, data.getId_pengurus());
+        mContext.startActivity(intent);
+      }
+    });
+  }
+
+  @Override
+  public int getItemCount() {
+    return beritaData.size();
+  }
+
+
+  @Override
+  public void onAdapterChanged(@NonNull ViewPager viewPager, @Nullable PagerAdapter oldAdapter, @Nullable PagerAdapter newAdapter) {
+
+  }
+
+  public class GridViewHolder extends RecyclerView.ViewHolder {
+    ImageView iv_background;
+    TextView tv_header, tv_tanggal, tv_detail;
+
+    public GridViewHolder(@NonNull View itemView) {
+      super(itemView);
+      iv_background = itemView.findViewById(R.id.iv_background);
+      tv_tanggal = itemView.findViewById(R.id.tv_tanggal);
+      tv_header = itemView.findViewById(R.id.tv_header);
+      tv_detail = itemView.findViewById(R.id.tv_detail);
+
+    }
+  }
 
 }

@@ -3,6 +3,9 @@ package com.mydonate.data;
 public class BeritaData {
   String id_pengurus, created_at, title, detail, image;
 
+  public BeritaData() {
+  }
+
   public BeritaData(String id_pengurus, String created_at, String title, String detail, String image) {
     this.id_pengurus = id_pengurus;
     this.created_at = created_at;
