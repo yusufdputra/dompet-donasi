@@ -63,6 +63,15 @@ public class DetailLaporanKeuanganFragment extends Fragment implements View.OnCl
     View view = inflater.inflate(R.layout.fragment_detail_laporan_keuangan, container, false);
     init(view);
     setOnClickListener();
+
+//    dateChangeListener();
+
+    return view;
+
+  }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     if (getArguments() != null) {
       Uid = getArguments().getString(KEY_ID);
     } else {
@@ -75,10 +84,6 @@ public class DetailLaporanKeuanganFragment extends Fragment implements View.OnCl
     GetDetail();
     getMonthNow();
     initTabLayout();
-    dateChangeListener();
-
-    return view;
-
   }
 
   private void getMonthNow() {
@@ -155,6 +160,7 @@ public class DetailLaporanKeuanganFragment extends Fragment implements View.OnCl
     tabLayout.clearOnTabSelectedListeners();
 
     //Set up the view pager and fragments
+
     adapter = new TabFragmentAdapter(getChildFragmentManager());
     adapter.notifyDataSetChanged();
     adapter.addFragment(UangMasukFragment.newInstance(Uid, getBulan, getTahun), "Masuk");
@@ -222,7 +228,6 @@ public class DetailLaporanKeuanganFragment extends Fragment implements View.OnCl
     int id = view.getId();
     switch (id) {
       case R.id.iv_back:
-
         getActivity().onBackPressed();
         break;
       case R.id.iv_get_date:
@@ -240,7 +245,7 @@ public class DetailLaporanKeuanganFragment extends Fragment implements View.OnCl
                 getBulan = month;
                 getTahun = year;
                 tv_bulan.setText(monthLabel);
-
+                initTabLayout();
               }
             })
             .setNegativeButton(new OnCancelMonthDialogListener() {
@@ -249,5 +254,10 @@ public class DetailLaporanKeuanganFragment extends Fragment implements View.OnCl
                 dialog.dismiss();
               }
             }).show();
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
   }
 }

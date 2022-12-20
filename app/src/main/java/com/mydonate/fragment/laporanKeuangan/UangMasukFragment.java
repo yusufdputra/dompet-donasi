@@ -39,7 +39,7 @@ public class UangMasukFragment extends Fragment {
     private TextView tv_not_found, tv_jumlah;
     private RecyclerView rv_riwayat;
     private ShimmerFrameLayout shimmerLayout;
-    private ArrayList<TransaksiPembayaranData> transaksiPembayaranData;
+    private ArrayList<TransaksiPembayaranData> transaksiPembayaranData = new ArrayList<>();
     private static Double JumlahDanaMasuk = 0.0;
 
     public static UangMasukFragment newInstance(String uid, int getBulan, int getTahun) {
@@ -69,16 +69,13 @@ public class UangMasukFragment extends Fragment {
     }
 
     private void getRiwayat() {
-        if (transaksiPembayaranData != null) {
-            transaksiPembayaranData.clear();
-        } else {
-            transaksiPembayaranData = new ArrayList<>();
-        }
+
 
         Query db = FirebaseDatabase.getInstance().getReference().child("Kebutuhan").orderByChild("id_pengurus").equalTo(id_user);
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                transaksiPembayaranData.clear();
                 if (snapshot.exists()) {
                     for (DataSnapshot npsnapshot : snapshot.getChildren()) {
                         String id_keb = npsnapshot.getKey();
@@ -113,14 +110,11 @@ public class UangMasukFragment extends Fragment {
                                                 // akumulasikan jumlah dana masuk
                                                 String bayar = npsnapshots.child("total_bayar").getValue(String.class);
                                                 JumlahDanaMasuk = JumlahDanaMasuk + Double.parseDouble(bayar);
-                                                Log.i(TAG, "onDataChange: " + JumlahDanaMasuk.toString());
 
                                             }
 
+                                            Log.i(TAG, "onDataChange: size " + transaksiPembayaranData.size());
                                             if (transaksiPembayaranData.size() > 0) {
-
-                                                Log.i(TAG, "onDataChange2: " + JumlahDanaMasuk.toString());
-
                                                 RiwayatDonasiAdapter riwayatDonasiAdapter = new RiwayatDonasiAdapter(getContext(), transaksiPembayaranData, keyItem, "laporan");
                                                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                                                 layoutManager.setReverseLayout(true);
@@ -143,12 +137,12 @@ public class UangMasukFragment extends Fragment {
                                     }
                                     tv_jumlah.setText(Currencyfy.currencyfy(JumlahDanaMasuk, false, false));
                                 } else {
-                                    tv_jumlah.setText(Currencyfy.currencyfy(0, false, false));
-                                    shimmerLayout.stopShimmer();
-                                    shimmerLayout.setVisibility(View.GONE);
-
-                                    rv_riwayat.setVisibility(View.GONE);
-                                    tv_not_found.setVisibility(View.VISIBLE);
+//                                    tv_jumlah.setText(Currencyfy.currencyfy(0, false, false));
+//                                    shimmerLayout.stopShimmer();
+//                                    shimmerLayout.setVisibility(View.GONE);
+//
+//                                    rv_riwayat.setVisibility(View.GONE);
+//                                    tv_not_found.setVisibility(View.VISIBLE);
                                 }
                             }
 
@@ -161,12 +155,6 @@ public class UangMasukFragment extends Fragment {
                     }
 
 
-                } else {
-                    shimmerLayout.stopShimmer();
-                    shimmerLayout.setVisibility(View.GONE);
-
-                    rv_riwayat.setVisibility(View.GONE);
-                    tv_not_found.setVisibility(View.VISIBLE);
                 }
             }
 

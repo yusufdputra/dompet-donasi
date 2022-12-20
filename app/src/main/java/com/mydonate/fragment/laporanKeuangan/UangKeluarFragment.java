@@ -2,7 +2,6 @@ package com.mydonate.fragment.laporanKeuangan;
 
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,8 +29,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static android.content.ContentValues.TAG;
-
 public class UangKeluarFragment extends Fragment {
     private static String id_user;
     private static int getNewBulan, getNewTahun;
@@ -39,7 +36,8 @@ public class UangKeluarFragment extends Fragment {
     private TextView tv_not_found, tv_jumlah;
     private RecyclerView rv_riwayat;
     private ShimmerFrameLayout shimmerLayout;
-    private ArrayList<TransaksiPembayaranData> transaksiPembayaranData;
+    private ArrayList<TransaksiPembayaranData> transaksiPembayaranData = new ArrayList<>();
+    ;
     private static Double JumlahDanaKeluar = 0.0;
 
     public static UangKeluarFragment newInstance(String uid, int getBulan, int getTahun) {
@@ -69,16 +67,13 @@ public class UangKeluarFragment extends Fragment {
     }
 
     private void getRiwayat() {
-        if (transaksiPembayaranData != null) {
-            transaksiPembayaranData.clear();
-        } else {
-            transaksiPembayaranData = new ArrayList<>();
-        }
+
 
         Query db = FirebaseDatabase.getInstance().getReference().child("Kebutuhan").orderByChild("id_pengurus").equalTo(id_user);
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                transaksiPembayaranData.clear();
                 if (snapshot.exists()) {
                     for (DataSnapshot npsnapshot : snapshot.getChildren()) {
                         String id_keb = npsnapshot.getKey();
@@ -110,7 +105,6 @@ public class UangKeluarFragment extends Fragment {
                                                 transaksiPembayaranData.add(list);
                                                 keyItem.add(npsnapshots.getKey());
 
-                                                Log.i(TAG, "onDataChange: "+npsnapshots.getKey());
                                                 // akumulasikan jumlah dana masuk
                                                 String bayar = npsnapshots.child("total_bayar").getValue(String.class);
                                                 JumlahDanaKeluar = JumlahDanaKeluar + Double.parseDouble(bayar);
@@ -139,12 +133,12 @@ public class UangKeluarFragment extends Fragment {
                                     }
                                     tv_jumlah.setText(Currencyfy.currencyfy(JumlahDanaKeluar, false, false));
                                 } else {
-                                    tv_jumlah.setText(Currencyfy.currencyfy(0, false, false));
-                                    shimmerLayout.stopShimmer();
-                                    shimmerLayout.setVisibility(View.GONE);
-
-                                    rv_riwayat.setVisibility(View.GONE);
-                                    tv_not_found.setVisibility(View.VISIBLE);
+//                                    tv_jumlah.setText(Currencyfy.currencyfy(0, false, false));
+//                                    shimmerLayout.stopShimmer();
+//                                    shimmerLayout.setVisibility(View.GONE);
+//
+//                                    rv_riwayat.setVisibility(View.GONE);
+//                                    tv_not_found.setVisibility(View.VISIBLE);
                                 }
                             }
 
@@ -158,11 +152,11 @@ public class UangKeluarFragment extends Fragment {
 
 
                 } else {
-                    shimmerLayout.stopShimmer();
-                    shimmerLayout.setVisibility(View.GONE);
-
-                    rv_riwayat.setVisibility(View.GONE);
-                    tv_not_found.setVisibility(View.VISIBLE);
+//                    shimmerLayout.stopShimmer();
+//                    shimmerLayout.setVisibility(View.GONE);
+//
+//                    rv_riwayat.setVisibility(View.GONE);
+//                    tv_not_found.setVisibility(View.VISIBLE);
                 }
             }
 

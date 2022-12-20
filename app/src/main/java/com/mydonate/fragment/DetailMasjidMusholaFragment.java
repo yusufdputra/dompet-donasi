@@ -1,5 +1,6 @@
 package com.mydonate.fragment;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,6 +30,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.jpvs0101.currencyfy.Currencyfy;
 import com.mydonate.R;
+import com.mydonate.activity.Berita.BeritaActivity;
 import com.mydonate.adapter.DaftarKebutuhanAdapter;
 import com.mydonate.adapter.ItemBeritaSmallAdapter;
 import com.mydonate.adapter.RiwayatDonasiAdapter;
@@ -445,6 +447,11 @@ public class DetailMasjidMusholaFragment extends Fragment implements View.OnClic
         switch (v.getId()) {
             case R.id.iv_back:
                 getActivity().onBackPressed();
+                break;
+            case R.id.tv_more_berita:
+                Intent intent = new Intent(getActivity(), BeritaActivity.class);
+                intent.putExtra(LoginFragment.PENGURUS_LOGIN, Uid);
+                startActivity(intent);
                 break;
 
         }

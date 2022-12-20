@@ -83,8 +83,9 @@
 
             <TextView
                 android:id="@+id/tv_more_berita"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="end"
                 android:layout_marginEnd="@dimen/_12sdp"
                 android:text="Lebih Banyak Berita"
                 android:textAlignment="textEnd"
