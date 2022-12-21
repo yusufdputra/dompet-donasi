@@ -104,8 +104,8 @@ public class BeritaActivity extends AppCompatActivity {
     ll_tambah.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Intent intent = new Intent(getApplicationContext(), CreateEditBeritaActivity.class);
-        getApplicationContext().startActivity(intent);
+        Intent intent = new Intent(view.getContext(), CreateEditBeritaActivity.class);
+        view.getContext().startActivity(intent);
       }
     });
     ivBack.setOnClickListener(new View.OnClickListener() {

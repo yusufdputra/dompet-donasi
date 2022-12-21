@@ -83,10 +83,10 @@ public class ItemBeritaBigAdapter extends RecyclerView.Adapter<ItemBeritaBigAdap
     holder.itemView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Intent intent = new Intent(mContext, DetailBeritaActivity.class);
+        Intent intent = new Intent(view.getContext(), DetailBeritaActivity.class);
         intent.putExtra(KEY_ID_BERITA, keyItem.get(position));
         intent.putExtra(KEY_ID_PENGURUS, data.getId_pengurus());
-        mContext.startActivity(intent);
+        view.getContext().startActivity(intent);
       }
     });
   }

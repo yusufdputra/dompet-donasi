@@ -450,8 +450,9 @@ public class DetailMasjidMusholaFragment extends Fragment implements View.OnClic
                 break;
             case R.id.tv_more_berita:
                 Intent intent = new Intent(getActivity(), BeritaActivity.class);
-                intent.putExtra(LoginFragment.PENGURUS_LOGIN, Uid);
-                startActivity(intent);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+              intent.putExtra(LoginFragment.PENGURUS_LOGIN, Uid);
+              getActivity().startActivity(intent);
                 break;
 
         }

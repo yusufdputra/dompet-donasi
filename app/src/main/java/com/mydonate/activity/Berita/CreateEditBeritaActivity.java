@@ -47,7 +47,7 @@ import java.util.Locale;
 
 public class CreateEditBeritaActivity extends AppCompatActivity implements View.OnClickListener {
   private int Image_Request_Code = 1;
-  private String Uid, idBerita;
+  private String Uid, idBerita, filePathCurrent = "";
   private Uri filepath_berita;
   private ImageView iv_back, iv_image;
   private Button btn_save;
@@ -129,7 +129,7 @@ public class CreateEditBeritaActivity extends AppCompatActivity implements View.
     if (filepath_berita != null) {
       saveImage(view);
     } else {
-      saveDataBerita("");
+      saveDataBerita(filePathCurrent);
     }
 
     progressDialog.dismiss();
@@ -197,6 +197,7 @@ public class CreateEditBeritaActivity extends AppCompatActivity implements View.
           tv_title.setText(snapshot.child("title").getValue(String.class));
           tv_detail.setText(snapshot.child("detail").getValue(String.class));
           String getImage = snapshot.child("image").getValue(String.class);
+          filePathCurrent = getImage;
           if (getImage != "") {
             //set image to layout
             StorageReference dateRef = ref_storage.child("Berita/" + getImage);

@@ -144,7 +144,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_image"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:elevation="0px"
             app:cardCornerRadius="@dimen/_20sdp">
 
