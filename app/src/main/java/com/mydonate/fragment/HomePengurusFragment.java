@@ -206,7 +206,7 @@ public class HomePengurusFragment extends Fragment implements View.OnClickListen
                     Intent i = new Intent(getActivity(), AuthActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(i);
-                    getActivity().finish();
+                    getActivity().finishAffinity();
                 }
             }
         };
@@ -276,7 +276,6 @@ public class HomePengurusFragment extends Fragment implements View.OnClickListen
         alerBuilder.setPositiveButton("Yes", (dialogInterface, i) -> {
 
             auth.signOut();
-            getActivity().finish();
         });
 
         alerBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {

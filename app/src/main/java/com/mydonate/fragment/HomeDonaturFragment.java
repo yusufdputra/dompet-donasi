@@ -40,7 +40,6 @@ import com.mydonate.adapter.RiwayatDonasiAdapter;
 import com.mydonate.data.Donatur;
 import com.mydonate.data.DonaturData;
 import com.mydonate.data.TransaksiPembayaranData;
-import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -199,7 +198,7 @@ public class HomeDonaturFragment extends Fragment implements View.OnClickListene
                     Intent i = new Intent(getActivity(), AuthActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(i);
-                    getActivity().finish();
+                    getActivity().finishAffinity();
                 }
             }
         };
