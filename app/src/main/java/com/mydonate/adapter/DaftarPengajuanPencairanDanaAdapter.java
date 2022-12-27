@@ -1,5 +1,7 @@
 package com.mydonate.adapter;
 
+import static android.content.ContentValues.TAG;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
@@ -7,8 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,12 +26,9 @@ import com.google.firebase.storage.StorageReference;
 import com.jpvs0101.currencyfy.Currencyfy;
 import com.mydonate.R;
 import com.mydonate.data.PengajuanPencairanDanaData;
-import com.mydonate.fragment.UploadBuktiPenyerahanFragment;
 import com.mydonate.fragment.pencairan.DetailPengajuanPencairanFragment;
 
 import java.util.ArrayList;
-
-import static android.content.ContentValues.TAG;
 
 public class DaftarPengajuanPencairanDanaAdapter extends RecyclerView.Adapter<DaftarPengajuanPencairanDanaAdapter.daftarPembayaranViewholder> {
     public final static String KEY_ID_KEBUTUHAN = "IDKebutuhan";
@@ -67,16 +64,16 @@ public class DaftarPengajuanPencairanDanaAdapter extends RecyclerView.Adapter<Da
     }
 
     @Override
-    public void onBindViewHolder(@NonNull daftarPembayaranViewholder holder, int position) {
+    public void onBindViewHolder(@NonNull daftarPembayaranViewholder holder, @SuppressLint("RecyclerView") int position) {
 
         PengajuanPencairanDanaData id = pengajuanPencairanDanaData.get(position);
 
-        if (id.getStatus().equals("baru")){
+        if (id.getStatus().equals("baru")) {
             holder.status.setBackground(ContextCompat.getDrawable(mContext, R.drawable.bg_status_blue));
-        }else if  (id.getStatus().equals("proses")){
+        } else if (id.getStatus().equals("proses")) {
             holder.status.setBackground(ContextCompat.getDrawable(mContext, R.drawable.bg_status_green));
         }
-        Log.i(TAG, "onBindViewHolder: "+id.getStatus());
+        Log.i(TAG, "onBindViewHolder: " + id.getStatus());
 
 
         ref_pengurus = FirebaseDatabase.getInstance().getReference().child("Users").child(id.getId_pengurus());

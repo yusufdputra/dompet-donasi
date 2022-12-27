@@ -221,7 +221,7 @@ public class ItemPencairanDanaDialogFragment extends BottomSheetDialogFragment i
                 if (!validasiPencairan(error_nominal) || !validasiPencairan(error_keterangan)) {
                     return;
                 } else {
-                    ajukanPermohonan();
+                    ajukanPermohonan(view);
                 }
                 break;
         }
@@ -232,7 +232,7 @@ public class ItemPencairanDanaDialogFragment extends BottomSheetDialogFragment i
         super.dismiss();
     }
 
-    private void ajukanPermohonan() {
+    private void ajukanPermohonan(View view) {
         progressBar.setVisibility(View.VISIBLE);
         // cek apakah sudah ada atau belum
         try {
@@ -240,7 +240,7 @@ public class ItemPencairanDanaDialogFragment extends BottomSheetDialogFragment i
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (!snapshot.exists()) {
-                        savePengajuan();
+                        savePengajuan(view);
                     }
                 }
 
@@ -256,7 +256,7 @@ public class ItemPencairanDanaDialogFragment extends BottomSheetDialogFragment i
 
     }
 
-    private void savePengajuan() {
+    private void savePengajuan(View view) {
         PengajuanPencairanDanaData data = new PengajuanPencairanDanaData(
                 Getid_kebutuhan,
                 Getid_pengurus,
@@ -268,7 +268,7 @@ public class ItemPencairanDanaDialogFragment extends BottomSheetDialogFragment i
         String key = ref_pengajuan.push().getKey();
         ref_pengajuan.child(key).setValue(data);
         progressBar.setVisibility(View.GONE);
-        Toast.makeText(getContext(), "Pengajuan Pencairan Dana Berhasil.", Toast.LENGTH_LONG).show();
+        Toast.makeText(view.getContext(), "Pengajuan Pencairan Dana Berhasil.", Toast.LENGTH_LONG).show();
 
         this.dismiss();
     }

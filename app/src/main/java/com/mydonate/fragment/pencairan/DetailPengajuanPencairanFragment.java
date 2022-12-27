@@ -1,5 +1,9 @@
 package com.mydonate.fragment.pencairan;
 
+import static android.app.Activity.RESULT_OK;
+import static android.content.ContentValues.TAG;
+
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ContentResolver;
@@ -54,9 +58,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import static android.app.Activity.RESULT_OK;
-import static android.content.ContentValues.TAG;
-
 public class DetailPengajuanPencairanFragment extends Fragment implements View.OnClickListener {
     int Image_Request_Code1 = 1;
     private String id_pengurus, idKebutuhan, nominal_pencairan, id_pencairan, status, nominal_kebutuhan, idUser, keterangan;
@@ -72,6 +73,7 @@ public class DetailPengajuanPencairanFragment extends Fragment implements View.O
     private int countFotoPenyerahan;
 
     private StorageReference strRef_kebutuhan, strRef_bukti_penyerahan;
+
     private StorageTask mUploadTask;
     private DatabaseReference ref_kebutuhan, ref_pengurus, ref_pencairan_dana, ref_bayar_kebutuhan, mDbTransaksiPembayaran;
 
@@ -95,6 +97,7 @@ public class DetailPengajuanPencairanFragment extends Fragment implements View.O
             status = getArguments().getString(DaftarPengajuanPencairanDanaAdapter.KEY_ID_STATUS);
             keterangan = getArguments().getString(DaftarPengajuanPencairanDanaAdapter.KEY_KETERANGAN);
             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            ;
             idUser = currentUser.getUid();
         }
         init(view);
@@ -129,6 +132,7 @@ public class DetailPengajuanPencairanFragment extends Fragment implements View.O
         btn_terima = view.findViewById(R.id.btn_terima);
         strRef_kebutuhan = FirebaseStorage.getInstance().getReference("Kebutuhan");
         strRef_bukti_penyerahan = FirebaseStorage.getInstance().getReference("Bukti Penyerahan");
+
 
 
         ref_bayar_kebutuhan = FirebaseDatabase.getInstance().getReference("Bayar Kebutuhan");
@@ -221,12 +225,13 @@ public class DetailPengajuanPencairanFragment extends Fragment implements View.O
         super.onViewCreated(view, savedInstanceState);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         int id = view.getId();
         switch (id) {
             case R.id.iv_back:
-                getActivity().onBackPressed();
+                requireActivity().onBackPressed();
                 break;
 
             case R.id.iv_upStrukBarang:
@@ -239,7 +244,7 @@ public class DetailPengajuanPencairanFragment extends Fragment implements View.O
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             Toast.makeText(getContext(), "Silahkan Lakukan Penyerahan dan Upload Bukti Penyerahan", Toast.LENGTH_LONG).show();
-                            getActivity().onBackPressed();
+                            requireActivity().onBackPressed();
                         }
                     });
                 } else {
@@ -302,7 +307,7 @@ public class DetailPengajuanPencairanFragment extends Fragment implements View.O
 
 
     private void uploadData(View view) {
-        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        final ProgressDialog progressDialog = new ProgressDialog(view.getContext());
         progressDialog.setTitle("Loading...");
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
@@ -323,7 +328,38 @@ public class DetailPengajuanPencairanFragment extends Fragment implements View.O
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                hashMap.put(finalI, taskSnapshot.getStorage().getName());
+                                if (finalI == (ImgUriList.size() - 1)) {
+                                    saveAll(idKebutuhan, hashMap, progressDialog, view);
+                                }
                                 // save
+                                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                Date date = new Date();
+                                TransaksiPembayaranData upload = new TransaksiPembayaranData(
+                                        null,
+                                        null,
+                                        DonasiUmumFragment.KEY_NAMA_DONASI,
+                                        null,
+                                        Integer.toString(nominal_pencairan_conv),
+                                        dateFormat.format(date),
+                                        "200",
+                                        idUser,
+                                        idKebutuhan,
+                                        null
+                                );
+
+                                String key = mDbTransaksiPembayaran.push().getKey();
+                                mDbTransaksiPembayaran.child(key).setValue(upload);
+
+
+                                ref_pencairan_dana.child(id_pencairan).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        progressDialog.dismiss();
+                                        Toast.makeText(getContext(), "Berhasil upload bukti penyerahan.", Toast.LENGTH_SHORT).show();
+                                        requireActivity().onBackPressed();
+                                    }
+                                });
 
                             }
                         }).addOnFailureListener(new OnFailureListener() {
@@ -343,44 +379,14 @@ public class DetailPengajuanPencairanFragment extends Fragment implements View.O
                         }).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                                hashMap.put(finalI, task.getResult().getStorage().getName());
-                                if (finalI == (ImgUriList.size() - 1)) {
-                                    saveAll(idKebutuhan, hashMap, progressDialog, view);
-                                }
+
 
                             }
                         });
             }
 
 
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Date date = new Date();
-            TransaksiPembayaranData upload = new TransaksiPembayaranData(
-                    null,
-                    null,
-                    DonasiUmumFragment.KEY_NAMA_DONASI,
-                    null,
-                    Integer.toString(nominal_pencairan_conv),
-                    dateFormat.format(date),
-                    "200",
-                    idUser,
-                    idKebutuhan,
-                    null
-            );
 
-            String key = mDbTransaksiPembayaran.push().getKey();
-            mDbTransaksiPembayaran.child(key).setValue(upload);
-
-
-            progressDialog.dismiss();
-
-            ref_pencairan_dana.child(id_pencairan).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    Toast.makeText(getContext(), "Berhasil upload bukti penyerahan.", Toast.LENGTH_SHORT).show();
-                    getActivity().finish();
-                }
-            });
 
 
 
