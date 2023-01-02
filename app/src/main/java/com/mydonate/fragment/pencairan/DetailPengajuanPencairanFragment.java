@@ -332,35 +332,6 @@ public class DetailPengajuanPencairanFragment extends Fragment implements View.O
                                 if (finalI == (ImgUriList.size() - 1)) {
                                     saveAll(idKebutuhan, hashMap, progressDialog, view);
                                 }
-                                // save
-                                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                                Date date = new Date();
-                                TransaksiPembayaranData upload = new TransaksiPembayaranData(
-                                        null,
-                                        null,
-                                        DonasiUmumFragment.KEY_NAMA_DONASI,
-                                        null,
-                                        Integer.toString(nominal_pencairan_conv),
-                                        dateFormat.format(date),
-                                        "200",
-                                        idUser,
-                                        idKebutuhan,
-                                        null
-                                );
-
-                                String key = mDbTransaksiPembayaran.push().getKey();
-                                mDbTransaksiPembayaran.child(key).setValue(upload);
-
-
-                                ref_pencairan_dana.child(id_pencairan).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        progressDialog.dismiss();
-                                        Toast.makeText(getContext(), "Berhasil upload bukti penyerahan.", Toast.LENGTH_SHORT).show();
-                                        requireActivity().onBackPressed();
-                                    }
-                                });
-
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
@@ -379,15 +350,46 @@ public class DetailPengajuanPencairanFragment extends Fragment implements View.O
                         }).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                                if (task.isSuccessful()) {
 
-
+                                } else {
+                                    progressDialog.cancel();
+                                    Snackbar snackbar = Snackbar
+                                            .make(view, "Terjadi Kesalahan Saat Upload! ", Snackbar.LENGTH_LONG);
+                                    snackbar.show();
+                                }
                             }
                         });
             }
 
+            // save
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = new Date();
+            TransaksiPembayaranData upload = new TransaksiPembayaranData(
+                    null,
+                    null,
+                    DonasiUmumFragment.KEY_NAMA_DONASI,
+                    null,
+                    Integer.toString(nominal_pencairan_conv),
+                    dateFormat.format(date),
+                    "200",
+                    idUser,
+                    idKebutuhan,
+                    null
+            );
+
+            String key = mDbTransaksiPembayaran.push().getKey();
+            mDbTransaksiPembayaran.child(key).setValue(upload);
 
 
-
+            ref_pencairan_dana.child(id_pencairan).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    progressDialog.dismiss();
+                    Toast.makeText(getContext(), "Berhasil upload bukti penyerahan.", Toast.LENGTH_SHORT).show();
+                    requireActivity().onBackPressed();
+                }
+            });
 
 
         } catch (Exception e) {
