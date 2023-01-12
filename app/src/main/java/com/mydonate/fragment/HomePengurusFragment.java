@@ -107,52 +107,74 @@ public class HomePengurusFragment extends Fragment implements View.OnClickListen
             transaksiPembayaranData = new ArrayList<>();
         }
 
-        // get riwayat donasi
-        Query dbRef =  FirebaseDatabase.getInstance().getReference().child("Transaksi Pembayaran").orderByKey().limitToFirst(5);
-        dbRef.addValueEventListener(new ValueEventListener() {
+        Query db = FirebaseDatabase.getInstance().getReference().child("Kebutuhan").orderByChild("id_pengurus").equalTo(Uid);
+        db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                transaksiPembayaranData.clear();
                 if (snapshot.exists()) {
                     for (DataSnapshot npsnapshot : snapshot.getChildren()) {
-                        String status = String.valueOf(npsnapshot.child("status_code").getValue());
-                        if (status != null) {
-                            if (status.equals("200")) {
-                                TransaksiPembayaranData list = npsnapshot.getValue(TransaksiPembayaranData.class);
-                                transaksiPembayaranData.add(list);
-                                keyItem.add(npsnapshot.getKey());
+                        String id_keb = npsnapshot.getKey();
+
+                        Query db2 = FirebaseDatabase.getInstance().getReference().child("Transaksi Pembayaran").orderByChild("product_name").equalTo(id_keb).limitToFirst(5);
+                        db2.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshots) {
+                                if (snapshots.exists()) {
+
+                                    for (DataSnapshot npsnapshots : snapshots.getChildren()) {
+                                        String status_code = npsnapshots.child("status_code").getValue(String.class);
+                                        if (status_code != null && status_code.equals("200")) {
+                                            TransaksiPembayaranData list = npsnapshots.getValue(TransaksiPembayaranData.class);
+                                            transaksiPembayaranData.add(list);
+                                            keyItem.add(npsnapshots.getKey());
+                                        }
+
+                                    }
+                                    shimmerLayout.stopShimmer();
+                                    shimmerLayout.setVisibility(View.GONE);
+
+                                    RiwayatDonasiAdapter riwayatDonasiAdapter = new RiwayatDonasiAdapter(getContext(), transaksiPembayaranData, keyItem, "donasi");
+
+                                    rvRiwayatDonasi.setVisibility(View.VISIBLE);
+
+                                    LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                                    layoutManager.setReverseLayout(true);
+                                    layoutManager.setStackFromEnd(true);
+                                    rvRiwayatDonasi.setLayoutManager(layoutManager);
+                                    rvRiwayatDonasi.setAdapter(riwayatDonasiAdapter);
+                                } else {
+                                    shimmerLayout.stopShimmer();
+                                    shimmerLayout.setVisibility(View.GONE);
+                                    tv_no_data.setVisibility(View.VISIBLE);
+                                    rvRiwayatDonasi.setVisibility(View.VISIBLE);
+                                }
                             }
-                        }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
                     }
-                    shimmerLayout.stopShimmer();
-                    shimmerLayout.setVisibility(View.GONE);
-
-                    RiwayatDonasiAdapter riwayatDonasiAdapter = new RiwayatDonasiAdapter(getContext(), transaksiPembayaranData, keyItem, "donasi");
-
-                    rvRiwayatDonasi.setVisibility(View.VISIBLE);
-
-                    LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-                    layoutManager.setReverseLayout(true);
-                    layoutManager.setStackFromEnd(true);
-                    rvRiwayatDonasi.setLayoutManager(layoutManager);
-                    rvRiwayatDonasi.setAdapter(riwayatDonasiAdapter);
 
 
-                }else{
-
+                } else {
                     shimmerLayout.stopShimmer();
                     shimmerLayout.setVisibility(View.GONE);
                     tv_no_data.setVisibility(View.VISIBLE);
+                    rvRiwayatDonasi.setVisibility(View.VISIBLE);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                shimmerLayout.stopShimmer();
-                shimmerLayout.setVisibility(View.GONE);
-                tv_no_data.setVisibility(View.VISIBLE);
-                rvRiwayatDonasi.setVisibility(View.VISIBLE);
+
             }
         });
+
+
     }
 
     private void GetDataUser() {
@@ -237,7 +259,7 @@ public class HomePengurusFragment extends Fragment implements View.OnClickListen
         Bundle bundle = new Bundle();
         switch (v.getId()) {
             case R.id.tv_more:
-                RiwayatDonasiFragment fragment = new RiwayatDonasiFragment();
+                RiwayatDonasiPengurusFragment fragment = new RiwayatDonasiPengurusFragment();
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.home_frame_layout, fragment).addToBackStack(null).commit();
                 break;
