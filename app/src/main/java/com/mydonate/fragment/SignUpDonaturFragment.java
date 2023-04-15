@@ -1,5 +1,8 @@
 package com.mydonate.fragment;
 
+import static android.app.Activity.RESULT_OK;
+import static android.content.ContentValues.TAG;
+
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -11,14 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,16 +30,14 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -47,15 +46,6 @@ import com.google.firebase.storage.UploadTask;
 import com.mydonate.R;
 import com.mydonate.activity.AuthActivity;
 import com.mydonate.data.DonatursData;
-import com.mydonate.data.PengurusData;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Pattern;
-
-import static android.app.Activity.RESULT_OK;
-import static android.content.ContentValues.TAG;
-import static com.mydonate.fragment.SignUpPengurusFragment.MSG;
 
 public class SignUpDonaturFragment extends Fragment implements View.OnClickListener {
     private Button btnSignup;
@@ -206,6 +196,9 @@ public class SignUpDonaturFragment extends Fragment implements View.OnClickListe
                             progressDialog.dismiss();
 
                             EmailVerifikasi();
+
+
+                            FirebaseMessaging.getInstance().subscribeToTopic("all");
 
                             Intent intent = new Intent(getActivity(), AuthActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

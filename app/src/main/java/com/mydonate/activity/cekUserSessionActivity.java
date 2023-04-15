@@ -2,8 +2,6 @@ package com.mydonate.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +14,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.mydonate.R;
 import com.mydonate.fragment.DetailVerifikasiAkunPengurusFragment;
 import com.mydonate.fragment.LoginFragment;
@@ -37,6 +36,7 @@ public class cekUserSessionActivity extends AppCompatActivity {
                 //cek user sudah login atau belum
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
+                FirebaseMessaging.getInstance().subscribeToTopic("nope");
                 if (user != null) {
                     //cek tipe user
                     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -52,6 +52,8 @@ public class cekUserSessionActivity extends AppCompatActivity {
                                 if (!currentUser.isEmailVerified()) {
                                     GoToAuthAct();
                                 } else {
+                                    FirebaseMessaging.getInstance().subscribeToTopic("all");
+
                                     Intent intent = new Intent(cekUserSessionActivity.this, HomeActivity.class);
                                     intent.putExtra(HomeActivity.LOGIN_TYPE_KEY_EXTRA, LoginFragment.DONATUR_LOGIN);
                                     startActivity(intent);

@@ -35,6 +35,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.mydonate.R;
+import com.mydonate.component.FcmNotificationsSender;
 import com.mydonate.component.NumberTextWatcher;
 import com.mydonate.data.BayarKebutuhanData;
 import com.mydonate.data.KebutuhanData;
@@ -58,7 +59,7 @@ public class TambahKebutuhanActivity extends AppCompatActivity implements View.O
   private ProgressBar progressBar;
   private AppCompatSpinner sp_jenis_kebutuhan;
   private Uri filepath_kebutuhan, filepath_detail_kebutuhan;
-  private String Uid;
+  private String Uid, nama_tempat;
 
 
   private DatabaseReference mDatabaseRefKebutuhan, mDatabaseRefBayarKeb;
@@ -73,6 +74,7 @@ public class TambahKebutuhanActivity extends AppCompatActivity implements View.O
     Intent intent = getIntent();
     if (intent != null) {
       Uid = intent.getStringExtra(DetailProfilePengurus.UID_BUNDLE_KEY);
+      nama_tempat = intent.getStringExtra(DetailProfilePengurus.NAMA_TEMPAT_KEY);
 //      edit_harga_keb = intent.getStringExtra(DaftarKebutuhanAdapter.KEY_BIAYA_KEBUTUHAN);
 //      id_kebutuhan = intent.getStringExtra(DaftarKebutuhanAdapter.KEY_ID_KEBUTUHAN);
 //      nama_kebutuhan = intent.getStringExtra(DaftarKebutuhanAdapter.KEY_NAMA_KEBUTUHAN);
@@ -252,6 +254,16 @@ public class TambahKebutuhanActivity extends AppCompatActivity implements View.O
                 null
         );
         mDatabaseRefBayarKeb.child(key).setValue(data);
+
+        // send notif
+        FcmNotificationsSender notificationsSender = new FcmNotificationsSender(
+                "/topics/all",
+                "Yuk donasi sekarang!!! Satu Kebutuhan telah ditambahkan.",
+                kebutuhan + " di " + nama_tempat,
+                getApplicationContext(),
+                TambahKebutuhanActivity.this
+        );
+        notificationsSender.SendNotifications();
 
         Toast.makeText(getApplicationContext(), "Berhasil Menambah Kebutuhan", Toast.LENGTH_SHORT).show();
 

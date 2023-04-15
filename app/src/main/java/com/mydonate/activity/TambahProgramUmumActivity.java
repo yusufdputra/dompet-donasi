@@ -33,6 +33,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.mydonate.R;
+import com.mydonate.component.FcmNotificationsSender;
 import com.mydonate.data.ProgramUmumData;
 import com.mydonate.fragment.DetailProgramUmumFragment;
 
@@ -163,6 +164,17 @@ public class TambahProgramUmumActivity extends AppCompatActivity implements View
 
     dbReference.child(Uid).child("nama").setValue(et_nama.getText().toString());
     dbReference.child(Uid).child("keterangan").setValue(et_detail.getText().toString());
+
+    // send notif
+    FcmNotificationsSender notificationsSender = new FcmNotificationsSender(
+            "/topics/all",
+            "Yuk donasi sekarang!!! Satu Program Umum telah ditambahkan.",
+            "Program :" + et_nama.getText().toString(),
+            getApplicationContext(),
+            TambahProgramUmumActivity.this
+    );
+    notificationsSender.SendNotifications();
+
     // jika mengubah foto
     if (filepath_brosur != null) {
       try {
@@ -178,6 +190,7 @@ public class TambahProgramUmumActivity extends AppCompatActivity implements View
                       @Override
                       public void onSuccess(Void aVoid) {
                         dbReference.child(Uid).child("foto").setValue(taskSnapshot.getStorage().getName());
+
 
                         progressDialog.cancel();
                         Toast.makeText(view.getContext(), "Berhasil Mengubah Data", Toast.LENGTH_SHORT).show();
@@ -251,11 +264,22 @@ public class TambahProgramUmumActivity extends AppCompatActivity implements View
                   String key = dbReference.push().getKey();
                   dbReference.child(key).setValue(value);
 
+                  // send notif
+                  FcmNotificationsSender notificationsSender = new FcmNotificationsSender(
+                          "/topics/all",
+                          "Yuk donasi sekarang!!! Satu Program Umum telah ditambahkan.",
+                          "Program :" + et_nama.getText().toString(),
+                          getApplicationContext(),
+                          TambahProgramUmumActivity.this
+                  );
+                  notificationsSender.SendNotifications();
+
                   progressDialog.dismiss();
                   Snackbar snackbar = Snackbar
                           .make(view, "Berhasil menyimpan data.", Snackbar.LENGTH_LONG);
                   snackbar.show();
 
+                  // send notif
                   finish();
 
 

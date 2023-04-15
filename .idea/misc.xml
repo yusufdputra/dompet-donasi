@@ -15,7 +15,7 @@
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/drawable/ic_baseline_playlist_add_24.xml" value="0.3452502553626149" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/drawable/ic_twotone_add_circle_24.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/drawable/tab_bg.xml" value="0.3452502553626149" />
-        <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/activity_add_program_umum.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/activity_add_program_umum.xml" value="0.33" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/activity_admin.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/activity_auth.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/activity_berita.xml" value="0.33177083333333335" />
@@ -32,7 +32,7 @@
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_detail_laporan_keuangan.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_detail_masjid.xml" value="0.25" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_detail_masjid_2.xml" value="0.32314814814814813" />
-        <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_detail_pengajuan_pencairan.xml" value="0.25" />
+        <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_detail_pengajuan_pencairan.xml" value="0.33" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_detail_pengurus.xml" value="0.32533197139938713" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_detail_program_umum.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_detail_verif_pembayaran.xml" value="0.33177083333333335" />
@@ -47,7 +47,7 @@
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_item_pencairan_dana_list_dialog.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_item_pencairan_dana_list_dialog_item.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_list_laporan_keuangan.xml" value="0.33177083333333335" />
-        <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_login.xml" value="0.3475" />
+        <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_login.xml" value="0.32314814814814813" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_pengajuan_pencairan_dana.xml" value="0.17604166666666668" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_penyerahan_pu.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/fragment_pilih_tipe_user.xml" value="0.33" />
@@ -86,9 +86,11 @@
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/shimer_kebutuhan.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/slide_layout.xml" value="0.33" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/splash_screen_info.xml" value="0.25" />
+        <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/tes.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/view_zoom_image.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/layout/view_zoom_image_slider.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/mipmap-anydpi-v26/ic_launcher3.xml" value="0.3452502553626149" />
+        <entry key="..\:/Users/Yusuf Dwi Putra/Documents/Project Ade M/Donasiku/MyDonate/MyDonate/app/src/main/res/mipmap-anydpi-v26/ic_launcher3_round.xml" value="0.3452502553626149" />
       </map>
     </option>
   </component>

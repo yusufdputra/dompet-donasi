@@ -25,20 +25,34 @@
             android:theme="@style/NoActionBarTheme"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.SEND"/>
-                <data android:mimeType="message/rfc822"/>
+                <action android:name="android.intent.action.SEND" />
+                <data android:mimeType="message/rfc822" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.DonasiActivity"
+        <service
+            android:name=".component.FirebaseMessagingService"
+            android:exported="true"
+            android:permission="TODO"
+            tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".activity.DonasiActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/NoActionBarTheme"/>
-        <activity android:name=".activity.SlideViewPagerActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".activity.SlideViewPagerActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/NoActionBarTheme"/>
-        <activity android:name=".activity.cekUserSessionActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".activity.cekUserSessionActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/NoActionBarTheme"/>
-        <activity android:name=".activity.AboutActivity"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".activity.AboutActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme"/>
         <activity

@@ -57,6 +57,7 @@ import java.util.ArrayList;
 
 public class DetailProfilePengurus extends Fragment implements View.OnClickListener {
   public final static String UID_BUNDLE_KEY = "UID";
+  public final static String NAMA_TEMPAT_KEY = "NAMA_TEMPAT_KEY";
   public String errorMsg = "Opsss.. Terjadi Kesalahan.";
   public String SuccessMsg = "Berhasil";
   int Image_Request_Code1 = 1;
@@ -302,6 +303,7 @@ public class DetailProfilePengurus extends Fragment implements View.OnClickListe
       case R.id.iv_add_kebutuhan:
         intent = new Intent(getContext(), TambahKebutuhanActivity.class);
         intent.putExtra(UID_BUNDLE_KEY, Uid);
+        intent.putExtra(NAMA_TEMPAT_KEY, Unama_tempat);
         startActivity(intent);
         break;
       case R.id.iv_back:
